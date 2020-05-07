@@ -37,6 +37,7 @@ class LandingController: UIViewController {
     
     private let signUpButton: UIButton = {
         let button = Utilities().attributedButton(firstPart: "Don't have an account? ", secondPart: "Sign up!")
+        button.addTarget(self, action: #selector(handleSignUpTapped), for: .touchUpInside)
         return button
     }()
     
@@ -61,13 +62,17 @@ class LandingController: UIViewController {
         navigationController?.pushViewController(controller, animated: true)
     }
     
+    @objc func handleSignUpTapped() {
+        let controller = SignUpController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
     // MARK: - Helpers
     
     func configureUI() {
         view.backgroundColor = .white
         
         view.addSubview(landingBackground)
-        landingBackground.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: -80, paddingBottom: -80, paddingRight: -95)
+        landingBackground.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
         
         let stack = UIStackView(arrangedSubviews: [titleLabel, captionLabel])
         stack.axis = .vertical
@@ -79,6 +84,6 @@ class LandingController: UIViewController {
         
         view.addSubview(signUpButton)
         signUpButton.centerX(inView: view)
-        signUpButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
+        signUpButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 8)
     }
 }

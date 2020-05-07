@@ -1,14 +1,14 @@
 //
-//  SignInController.swift
+//  SignUpController.swift
 //  Unwind
 //
-//  Created by Alan Cao on 5/6/20.
+//  Created by Alan Cao on 5/7/20.
 //  Copyright © 2020 Alan Cao. All rights reserved.
 //
 
 import UIKit
 
-class SignInController: UIViewController {
+class SignUpController: UIViewController {
     
     // MARK: - Properties
     
@@ -24,6 +24,12 @@ class SignInController: UIViewController {
         return view
     }()
     
+    private lazy var usernameViewContainer: UIView = {
+        let image = UIImage(named: "username")
+        let view = Utilities().inputContainerView(withImage: image, textField: usernameTextField)
+        return view
+    }()
+    
     private let emailTextField: UITextField = {
         let textField = Utilities().textField(withPlaceholder: "Email")
         return textField
@@ -35,15 +41,20 @@ class SignInController: UIViewController {
         return textField
     }()
     
+    private let usernameTextField: UITextField = {
+        let textField = Utilities().textField(withPlaceholder: "Username")
+        return textField
+    }()
+    
     private let signInButton: UIButton = {
-        let button = Utilities().authButton(title: "Sign In")
-        button.addTarget(self, action: #selector(handleSignInTapped), for: .touchUpInside)
+        let button = Utilities().authButton(title: "Sign Up")
+        button.addTarget(self, action: #selector(handleSignUpTapped), for: .touchUpInside)
         return button
     }()
     
     private let signInImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "sign-in")
+        imageView.image = UIImage(named: "sign-up")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -64,8 +75,8 @@ class SignInController: UIViewController {
     
     // MARK: - Selectors
     
-    @objc func handleSignInTapped() {
-        // Authenticate user and switch view to main tab view
+    @objc func handleSignUpTapped() {
+        // Authenticate user and switch view to main tab controller
     }
     
     // MARK: - Helpers
@@ -75,7 +86,7 @@ class SignInController: UIViewController {
         
         configureNavigationUI()
         
-        let stack = UIStackView(arrangedSubviews: [emailViewContainer, passwordViewContainer, signInButton])
+        let stack = UIStackView(arrangedSubviews: [emailViewContainer, passwordViewContainer, usernameViewContainer, signInButton])
         stack.axis = .vertical
         stack.spacing = 20
         view.addSubview(stack)
@@ -83,13 +94,13 @@ class SignInController: UIViewController {
         stack.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingRight: 20)
         
         view.addSubview(signInImageView)
-        signInImageView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, height: view.frame.height / 2)
+        signInImageView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, height: view.frame.height / 2.5)
     }
     
     func configureNavigationUI() {
         navigationController?.navigationBar.tintColor = .unwindRed
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [.font : UIFont(name: "Sarabun-Bold", size: 36)!]
-        title = "Sign In"
+        title = "Sign Up"
     }
 }

@@ -20,6 +20,7 @@
 		443587F92463C21600A733C2 /* Sarabun-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 443587E82463C21600A733C2 /* Sarabun-Bold.ttf */; };
 		443587FA2463C21600A733C2 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 443587E92463C21600A733C2 /* OFL.txt */; };
 		443587FB2463C21600A733C2 /* Sarabun-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 443587EA2463C21600A733C2 /* Sarabun-SemiBold.ttf */; };
+		4495EC2A2464872400F455FC /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495EC292464872400F455FC /* SignUpController.swift */; };
 		44DDA5BB2463B051008A42CF /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA5BA2463B051008A42CF /* SignInController.swift */; };
 		44DDA5BE2463B06B008A42CF /* LandingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA5BD2463B06B008A42CF /* LandingController.swift */; };
 		44DDA5C02463B17D008A42CF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA5BF2463B17D008A42CF /* Extensions.swift */; };
@@ -62,6 +63,7 @@
 		443587E82463C21600A733C2 /* Sarabun-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sarabun-Bold.ttf"; sourceTree = "<group>"; };
 		443587E92463C21600A733C2 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		443587EA2463C21600A733C2 /* Sarabun-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sarabun-SemiBold.ttf"; sourceTree = "<group>"; };
+		4495EC292464872400F455FC /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		44DDA5BA2463B051008A42CF /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		44DDA5BD2463B06B008A42CF /* LandingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingController.swift; sourceTree = "<group>"; };
 		44DDA5BF2463B17D008A42CF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -115,9 +117,12 @@
 		44299E13245FF6440084BCC1 /* Unwind */ = {
 			isa = PBXGroup;
 			children = (
-				443587DF2463C21600A733C2 /* Sarabun */,
+				4495EC2724647BE400F455FC /* Model */,
+				4495EC2424647B9300F455FC /* View */,
+				4495EC2824647BE700F455FC /* VIewModel */,
 				44DDA5B72463B023008A42CF /* Controllers */,
 				44DDA5B82463B031008A42CF /* Utilities */,
+				443587DF2463C21600A733C2 /* Sarabun */,
 				44299E14245FF6440084BCC1 /* AppDelegate.swift */,
 				44299E16245FF6440084BCC1 /* SceneDelegate.swift */,
 				44299E1A245FF6440084BCC1 /* Main.storyboard */,
@@ -158,6 +163,27 @@
 			path = Sarabun;
 			sourceTree = "<group>";
 		};
+		4495EC2424647B9300F455FC /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4495EC2724647BE400F455FC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4495EC2824647BE700F455FC /* VIewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VIewModel;
+			sourceTree = "<group>";
+		};
 		44DDA5B72463B023008A42CF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +206,7 @@
 			children = (
 				44DDA5BD2463B06B008A42CF /* LandingController.swift */,
 				44DDA5BA2463B051008A42CF /* SignInController.swift */,
+				4495EC292464872400F455FC /* SignUpController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -322,6 +349,7 @@
 			files = (
 				443587DE2463BF7000A733C2 /* Utilities.swift in Sources */,
 				44DDA5C02463B17D008A42CF /* Extensions.swift in Sources */,
+				4495EC2A2464872400F455FC /* SignUpController.swift in Sources */,
 				44DDA5BB2463B051008A42CF /* SignInController.swift in Sources */,
 				44299E15245FF6440084BCC1 /* AppDelegate.swift in Sources */,
 				44299E17245FF6440084BCC1 /* SceneDelegate.swift in Sources */,
