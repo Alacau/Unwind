@@ -72,9 +72,8 @@ class SignInController: UIViewController {
     
     func configureUI() {
         view.backgroundColor = .white
-        
-        configureNavigationUI()
-        
+        title = "Sign In"
+            
         let stack = UIStackView(arrangedSubviews: [emailViewContainer, passwordViewContainer, signInButton])
         stack.axis = .vertical
         stack.spacing = 16
@@ -84,12 +83,5 @@ class SignInController: UIViewController {
         
         view.addSubview(signInImageView)
         signInImageView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, height: view.frame.height / 2)
-    }
-    
-    func configureNavigationUI() {
-        navigationController?.navigationBar.tintColor = .unwindRed
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [.font : UIFont(name: "Sarabun-Bold", size: 36)!]
-        title = "Sign In"
     }
 }

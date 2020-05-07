@@ -71,6 +71,8 @@ class LandingController: UIViewController {
     func configureUI() {
         view.backgroundColor = .white
         
+        configureNavigationUI()
+        
         view.addSubview(landingBackground)
         landingBackground.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
         
@@ -85,5 +87,11 @@ class LandingController: UIViewController {
         view.addSubview(signUpButton)
         signUpButton.centerX(inView: view)
         signUpButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 8)
+    }
+    
+    func configureNavigationUI() {
+        navigationController?.navigationBar.tintColor = .unwindRed
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.largeTitleTextAttributes = [.font : UIFont(name: "Sarabun-Bold", size: 36)!]
     }
 }
