@@ -20,9 +20,23 @@ class LandingController: UIViewController {
     }()
     
     private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Unwind"
+        let label = Utilities().makeLandingTitle(text: "Unwind", font: "Sarabun-ExtraBold", size: 56)
         return label
+    }()
+    
+    private let captionLabel: UILabel = {
+        let label = Utilities().makeLandingTitle(text: "Think in peace.", font: "Sarabun-Regular", size: 24)
+        return label
+    }()
+    
+    private let signInButton: UIButton = {
+        let button = UIButton(type: .system)
+        let title = NSAttributedString(string: "Sign in with Email", attributes: [.font : UIFont(name: "Sarabun-Bold", size: 16)!, .foregroundColor : UIColor.white])
+        button.setAttributedTitle(title, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .unwindRed
+        button.layer.cornerRadius = 52 / 2
+        return button
     }()
     
     // MARK: - Lifecycles
@@ -42,7 +56,12 @@ class LandingController: UIViewController {
         view.addSubview(landingBackground)
         landingBackground.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: -80, paddingBottom: -80, paddingRight: -95)
         
-        view.addSubview(titleLabel)
-        titleLabel.centerX(inView: view, topAnchor: view.topAnchor, paddingTop: view.frame.height / 3)
+        let stack = UIStackView(arrangedSubviews: [titleLabel, captionLabel])
+        stack.axis = .vertical
+        view.addSubview(stack)
+        stack.centerX(inView: view, topAnchor: view.topAnchor, paddingTop: view.frame.height / 3)
+        
+        view.addSubview(signInButton)
+        signInButton.anchor(top: stack.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 50, paddingLeft: 20, paddingRight: 20, height: 52)
     }
 }
