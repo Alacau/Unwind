@@ -22,7 +22,6 @@ class LandingController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Unwind"
-        label.font = UIFont(name: "Sarabun-Bold", size: 100)
         return label
     }()
     
