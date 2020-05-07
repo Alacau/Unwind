@@ -77,7 +77,7 @@ class SignInController: UIViewController {
         
         let stack = UIStackView(arrangedSubviews: [emailViewContainer, passwordViewContainer, signInButton])
         stack.axis = .vertical
-        stack.spacing = 20
+        stack.spacing = 16
         view.addSubview(stack)
         signInButton.anchor(height: 52)
         stack.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingRight: 20)
