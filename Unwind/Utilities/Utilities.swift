@@ -20,7 +20,7 @@ class Utilities {
     
     func authButton(title: String) -> UIButton {
         let button = UIButton(type: .system)
-        let title = NSAttributedString(string: "Sign in with Email", attributes: [.font : UIFont(name: "Sarabun-Bold", size: 16)!, .foregroundColor : UIColor.white])
+        let title = NSAttributedString(string: title, attributes: [.font : UIFont(name: "Sarabun-Bold", size: 20)!, .foregroundColor : UIColor.white])
         button.setAttributedTitle(title, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .unwindRed
