@@ -63,6 +63,8 @@ class Utilities {
     func textField(withPlaceholder placeholder: String) -> UITextField {
         let textField = UITextField()
         textField.textColor = .black
+        textField.autocapitalizationType = .none
+        textField.clearButtonMode = .whileEditing
         textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor : UIColor.placeholderText])
         
         return textField
