@@ -30,12 +30,12 @@ class LandingController: UIViewController {
     }()
     
     private let signInButton: UIButton = {
-        let button = UIButton(type: .system)
-        let title = NSAttributedString(string: "Sign in with Email", attributes: [.font : UIFont(name: "Sarabun-Bold", size: 16)!, .foregroundColor : UIColor.white])
-        button.setAttributedTitle(title, for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .unwindRed
-        button.layer.cornerRadius = 52 / 2
+        let button = Utilities().authButton(title: "Sign in with Email")
+        return button
+    }()
+    
+    private let signUpButton: UIButton = {
+        let button = Utilities().attributedButton(firstPart: "Don't have an account? ", secondPart: "Sign up!")
         return button
     }()
     
@@ -63,5 +63,9 @@ class LandingController: UIViewController {
         
         view.addSubview(signInButton)
         signInButton.anchor(top: stack.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 50, paddingLeft: 20, paddingRight: 20, height: 52)
+        
+        view.addSubview(signUpButton)
+        signUpButton.centerX(inView: view)
+        signUpButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
     }
 }
