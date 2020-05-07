@@ -31,6 +31,7 @@ class LandingController: UIViewController {
     
     private let signInButton: UIButton = {
         let button = Utilities().authButton(title: "Sign in with Email")
+        button.addTarget(self, action: #selector(handleSignInTapped), for: .touchUpInside)
         return button
     }()
     
@@ -41,17 +42,29 @@ class LandingController: UIViewController {
     
     // MARK: - Lifecycles
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
     }
     
+    // MARK: - Selectors
+    
+    @objc func handleSignInTapped() {
+        let controller = SignInController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     // MARK: - Helpers
     
     func configureUI() {
         view.backgroundColor = .white
-        navigationController?.navigationBar.isHidden = true
         
         view.addSubview(landingBackground)
         landingBackground.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: -80, paddingBottom: -80, paddingRight: -95)
