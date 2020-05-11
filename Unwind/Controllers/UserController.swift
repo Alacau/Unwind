@@ -30,6 +30,6 @@ class UserController: UIViewController {
     func configureNavigationUI() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [.font : UIFont(name: "Sarabun-Bold", size: 36)!]
-        navigationItem.title = "First Last" //  Will set this to the user's name
+        navigationItem.title = "Profile" //  Will set this to the user's name
     }
 }
