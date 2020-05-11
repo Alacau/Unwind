@@ -31,6 +31,7 @@
 		44E312302469B8C000C4513D /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E3122F2469B8C000C4513D /* UserController.swift */; };
 		44E312322469B8D300C4513D /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E312312469B8D300C4513D /* FavoritesController.swift */; };
 		44E312342469B8E100C4513D /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E312332469B8E100C4513D /* NotificationsController.swift */; };
+		44E312372469CC0600C4513D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E312362469CC0600C4513D /* AuthService.swift */; };
 		8B6C04DEB55BB9882C1A7F65 /* Pods_Unwind_UnwindUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467DD67679A4C443F2E4D12C /* Pods_Unwind_UnwindUITests.framework */; };
 		DCF9ADC8AFDB2AEFA1A763A9 /* Pods_UnwindTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31BE26ED055B59EADF6C91BB /* Pods_UnwindTests.framework */; };
 		F4A79FB727EF63CB65CC4E5A /* Pods_Unwind.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDF1611AF1C7F8370C8070E /* Pods_Unwind.framework */; };
@@ -87,6 +88,7 @@
 		44E3122F2469B8C000C4513D /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		44E312312469B8D300C4513D /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
 		44E312332469B8E100C4513D /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
+		44E312362469CC0600C4513D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		467DD67679A4C443F2E4D12C /* Pods_Unwind_UnwindUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unwind_UnwindUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47BF8C2FB98FE34916C4C443 /* Pods-Unwind-UnwindUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unwind-UnwindUITests.release.xcconfig"; path = "Target Support Files/Pods-Unwind-UnwindUITests/Pods-Unwind-UnwindUITests.release.xcconfig"; sourceTree = "<group>"; };
 		622333FB4B367C118A8204A1 /* Pods-UnwindTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwindTests.debug.xcconfig"; path = "Target Support Files/Pods-UnwindTests/Pods-UnwindTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				4495EC2424647B9300F455FC /* View */,
 				4495EC2824647BE700F455FC /* VIewModel */,
 				44DDA5B72463B023008A42CF /* Controllers */,
+				44E312352469CBEA00C4513D /* API */,
 				44DDA5B82463B031008A42CF /* Utilities */,
 				443587DF2463C21600A733C2 /* Sarabun */,
 				44299E1D245FF6440084BCC1 /* Assets.xcassets */,
@@ -247,6 +250,14 @@
 				4495EC292464872400F455FC /* SignUpController.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		44E312352469CBEA00C4513D /* API */ = {
+			isa = PBXGroup;
+			children = (
+				44E312362469CC0600C4513D /* AuthService.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		E42479A375808419D6395063 /* Pods */ = {
@@ -530,6 +541,7 @@
 				44E3122C2469B8A800C4513D /* FeedController.swift in Sources */,
 				44DDA5BE2463B06B008A42CF /* LandingController.swift in Sources */,
 				44E312322469B8D300C4513D /* FavoritesController.swift in Sources */,
+				44E312372469CC0600C4513D /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
