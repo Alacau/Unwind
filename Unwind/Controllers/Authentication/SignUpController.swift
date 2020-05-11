@@ -33,6 +33,7 @@ class SignUpController: UIViewController {
     
     private let emailTextField: UITextField = {
         let textField = Utilities().textField(withPlaceholder: "Email")
+        textField.keyboardType = .emailAddress
         return textField
     }()
     
@@ -77,7 +78,6 @@ class SignUpController: UIViewController {
     // MARK: - Selectors
     
     @objc func handleSignUpTapped() {
-        // Authenticate user and switch view to main tab controller
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         guard let username = usernameTextField.text else { return }
