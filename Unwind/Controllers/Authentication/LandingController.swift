@@ -66,6 +66,7 @@ class LandingController: UIViewController {
         let controller = SignUpController()
         navigationController?.pushViewController(controller, animated: true)
     }
+    
     // MARK: - Helpers
     
     func configureUI() {
