@@ -25,7 +25,7 @@ class LandingController: UIViewController {
     }()
     
     private let captionLabel: UILabel = {
-        let label = Utilities().makeLandingTitle(text: "Think in peace.", font: "Sarabun-Regular", size: 24)
+        let label = Utilities().makeLandingTitle(text: "Peaceful thinking.", font: "Sarabun-Regular", size: 24)
         return label
     }()
     

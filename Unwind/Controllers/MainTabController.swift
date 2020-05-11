@@ -28,21 +28,21 @@ class MainTabController: UITabBarController {
     func configureTabs() {
         // Embed controllers in navigation controller
         let articles = FeedController()
-        let articlesNav = createTabControllers(image: UIImage(named: "articles"), title: "Articles", viewController: articles)
+        let navItem1 = createTabControllers(image: UIImage(named: "articles"), title: "Articles", viewController: articles)
         
         let search = SearchController()
-        let searchNav = createTabControllers(image: UIImage(named: "search"), title: "Search", viewController: search)
+        let navItem2 = createTabControllers(image: UIImage(named: "search"), title: "Search", viewController: search)
         
         let user = UserController()
-        let userNav = createTabControllers(image: UIImage(named: "user"), title: "Profile", viewController: user)
+        let navItem3 = createTabControllers(image: UIImage(named: "user"), title: "Profile", viewController: user)
         
         let favorites = FavoritesController()
-        let favoritesNav = createTabControllers(image: UIImage(named: "favorites"), title: "Favorites", viewController: favorites)
+        let navItem4 = createTabControllers(image: UIImage(named: "favorites"), title: "Favorites", viewController: favorites)
 
         let notifications = NotificationsController()
-        let notificationsNav = createTabControllers(image: UIImage(named: "notifications"), title: "Notifications", viewController: notifications)
+        let navItem5 = createTabControllers(image: UIImage(named: "notifications"), title: "Notifications", viewController: notifications)
 
-        viewControllers = [articlesNav, searchNav, userNav, favoritesNav, notificationsNav]
+        viewControllers = [navItem1, navItem2, navItem3, navItem4, navItem5]
         
         tabBar.barTintColor = .white
         tabBar.tintColor = .unwindRed
