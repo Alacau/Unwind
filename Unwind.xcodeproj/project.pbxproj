@@ -25,6 +25,12 @@
 		44DDA5BB2463B051008A42CF /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA5BA2463B051008A42CF /* SignInController.swift */; };
 		44DDA5BE2463B06B008A42CF /* LandingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA5BD2463B06B008A42CF /* LandingController.swift */; };
 		44DDA5C02463B17D008A42CF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA5BF2463B17D008A42CF /* Extensions.swift */; };
+		44E3122A2469B84400C4513D /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E312292469B84400C4513D /* MainTabController.swift */; };
+		44E3122C2469B8A800C4513D /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E3122B2469B8A800C4513D /* FeedController.swift */; };
+		44E3122E2469B8B400C4513D /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E3122D2469B8B400C4513D /* SearchController.swift */; };
+		44E312302469B8C000C4513D /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E3122F2469B8C000C4513D /* UserController.swift */; };
+		44E312322469B8D300C4513D /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E312312469B8D300C4513D /* FavoritesController.swift */; };
+		44E312342469B8E100C4513D /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E312332469B8E100C4513D /* NotificationsController.swift */; };
 		8B6C04DEB55BB9882C1A7F65 /* Pods_Unwind_UnwindUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467DD67679A4C443F2E4D12C /* Pods_Unwind_UnwindUITests.framework */; };
 		DCF9ADC8AFDB2AEFA1A763A9 /* Pods_UnwindTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31BE26ED055B59EADF6C91BB /* Pods_UnwindTests.framework */; };
 		F4A79FB727EF63CB65CC4E5A /* Pods_Unwind.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDF1611AF1C7F8370C8070E /* Pods_Unwind.framework */; };
@@ -75,6 +81,12 @@
 		44DDA5BA2463B051008A42CF /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		44DDA5BD2463B06B008A42CF /* LandingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingController.swift; sourceTree = "<group>"; };
 		44DDA5BF2463B17D008A42CF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		44E312292469B84400C4513D /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		44E3122B2469B8A800C4513D /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
+		44E3122D2469B8B400C4513D /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		44E3122F2469B8C000C4513D /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		44E312312469B8D300C4513D /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
+		44E312332469B8E100C4513D /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
 		467DD67679A4C443F2E4D12C /* Pods_Unwind_UnwindUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unwind_UnwindUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47BF8C2FB98FE34916C4C443 /* Pods-Unwind-UnwindUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unwind-UnwindUITests.release.xcconfig"; path = "Target Support Files/Pods-Unwind-UnwindUITests/Pods-Unwind-UnwindUITests.release.xcconfig"; sourceTree = "<group>"; };
 		622333FB4B367C118A8204A1 /* Pods-UnwindTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwindTests.debug.xcconfig"; path = "Target Support Files/Pods-UnwindTests/Pods-UnwindTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -208,6 +220,12 @@
 			isa = PBXGroup;
 			children = (
 				44DDA5BC2463B055008A42CF /* Authentication */,
+				44E312292469B84400C4513D /* MainTabController.swift */,
+				44E3122B2469B8A800C4513D /* FeedController.swift */,
+				44E3122D2469B8B400C4513D /* SearchController.swift */,
+				44E3122F2469B8C000C4513D /* UserController.swift */,
+				44E312312469B8D300C4513D /* FavoritesController.swift */,
+				44E312332469B8E100C4513D /* NotificationsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -500,12 +518,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				443587DE2463BF7000A733C2 /* Utilities.swift in Sources */,
+				44E3122E2469B8B400C4513D /* SearchController.swift in Sources */,
 				44DDA5C02463B17D008A42CF /* Extensions.swift in Sources */,
+				44E312302469B8C000C4513D /* UserController.swift in Sources */,
+				44E3122A2469B84400C4513D /* MainTabController.swift in Sources */,
+				44E312342469B8E100C4513D /* NotificationsController.swift in Sources */,
 				4495EC2A2464872400F455FC /* SignUpController.swift in Sources */,
 				44DDA5BB2463B051008A42CF /* SignInController.swift in Sources */,
 				44299E15245FF6440084BCC1 /* AppDelegate.swift in Sources */,
 				44299E17245FF6440084BCC1 /* SceneDelegate.swift in Sources */,
+				44E3122C2469B8A800C4513D /* FeedController.swift in Sources */,
 				44DDA5BE2463B06B008A42CF /* LandingController.swift in Sources */,
+				44E312322469B8D300C4513D /* FavoritesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
