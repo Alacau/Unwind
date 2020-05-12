@@ -59,13 +59,13 @@ class SignUpController: UIViewController {
         return textField
     }()
     
-    private let signInButton: UIButton = {
+    private let signUpButton: UIButton = {
         let button = Utilities().authButton(title: "Sign Up")
         button.addTarget(self, action: #selector(handleSignUpTapped), for: .touchUpInside)
         return button
     }()
     
-    private let signInImageView: UIImageView = {
+    private let signUpImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "sign-up")
         imageView.contentMode = .scaleAspectFill
@@ -115,14 +115,15 @@ class SignUpController: UIViewController {
         view.backgroundColor = .white
         title = "Sign Up"
                 
-        let stack = UIStackView(arrangedSubviews: [emailViewContainer, passwordViewContainer, fullnameViewContainer, usernameViewContainer, signInButton, signInImageView])
+        let stack = UIStackView(arrangedSubviews: [emailViewContainer, passwordViewContainer, fullnameViewContainer, usernameViewContainer])
         stack.axis = .vertical
-        stack.spacing = 8
         view.addSubview(stack)
-        signInButton.anchor(height: 52)
         stack.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingRight: 20)
         
-        view.addSubview(signInImageView)
-        signInImageView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, height: view.frame.height / 2.8)
+        view.addSubview(signUpButton)
+        signUpButton.anchor(top: stack.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 12, paddingLeft: 20, paddingRight: 20, height: 52)
+        
+        view.addSubview(signUpImageView)
+        signUpImageView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, height: view.frame.height / 2.8)
     }
 }

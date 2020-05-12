@@ -75,12 +75,13 @@ class SignInController: UIViewController {
         view.backgroundColor = .white
         title = "Sign In"
             
-        let stack = UIStackView(arrangedSubviews: [emailViewContainer, passwordViewContainer, signInButton])
+        let stack = UIStackView(arrangedSubviews: [emailViewContainer, passwordViewContainer])
         stack.axis = .vertical
-        stack.spacing = 8
         view.addSubview(stack)
-        signInButton.anchor(height: 52)
         stack.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingRight: 20)
+        
+        view.addSubview(signInButton)
+        signInButton.anchor(top: stack.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 12, paddingLeft: 20, paddingRight: 20, height: 52)
         
         view.addSubview(signInImageView)
         signInImageView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, height: view.frame.height / 2)
