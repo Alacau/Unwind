@@ -25,6 +25,12 @@ class SignUpController: UIViewController {
         return view
     }()
     
+    private lazy var fullnameViewContainer: UIView = {
+        let image = UIImage(named: "username")!
+        let view = Utilities().inputContainerView(withImage: image, textField: fullnameTextField)
+        return view
+    }()
+    
     private lazy var usernameViewContainer: UIView = {
         let image = UIImage(named: "username")
         let view = Utilities().inputContainerView(withImage: image, textField: usernameTextField)
@@ -40,6 +46,11 @@ class SignUpController: UIViewController {
     private let passwordTextField: UITextField = {
         let textField = Utilities().textField(withPlaceholder: "Password")
         textField.isSecureTextEntry = true
+        return textField
+    }()
+    
+    private let fullnameTextField: UITextField = {
+        let textField = Utilities().textField(withPlaceholder: "Full Name")
         return textField
     }()
     
@@ -80,9 +91,10 @@ class SignUpController: UIViewController {
     @objc func handleSignUpTapped() {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
+        guard let fullname = fullnameTextField.text else { return }
         guard let username = usernameTextField.text else { return }
         
-        let credentials = AuthCredentials(email: email, password: password, username: username)
+        let credentials = AuthCredentials(email: email, password: password, fullname: fullname, username: username)
         
         AuthService.shared.signUpUser(withCredentials: credentials) { (error) in
             if let error = error {
@@ -103,14 +115,14 @@ class SignUpController: UIViewController {
         view.backgroundColor = .white
         title = "Sign Up"
                 
-        let stack = UIStackView(arrangedSubviews: [emailViewContainer, passwordViewContainer, usernameViewContainer, signInButton])
+        let stack = UIStackView(arrangedSubviews: [emailViewContainer, passwordViewContainer, fullnameViewContainer, usernameViewContainer, signInButton, signInImageView])
         stack.axis = .vertical
-        stack.spacing = 16
+        stack.spacing = 8
         view.addSubview(stack)
         signInButton.anchor(height: 52)
-        stack.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingRight: 20)
+        stack.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingRight: 20)
         
         view.addSubview(signInImageView)
-        signInImageView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, height: view.frame.height / 2.5)
+        signInImageView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, height: view.frame.height / 2.8)
     }
 }

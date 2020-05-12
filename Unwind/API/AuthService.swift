@@ -11,6 +11,7 @@ import Firebase
 struct AuthCredentials {
     let email: String
     let password: String
+    let fullname: String
     let username: String
 }
 
@@ -20,6 +21,7 @@ struct AuthService {
     func signUpUser(withCredentials credentials: AuthCredentials, completion: ((Error?) -> Void)?) {
         let email = credentials.email
         let password = credentials.password
+        let fullname = credentials.fullname
         let username = credentials.username
         
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
@@ -28,7 +30,7 @@ struct AuthService {
                 return
             }
             
-            let data = ["email": email, "username": username]
+            let data = ["email": email, "username": username, "fullname": fullname]
             Firestore.firestore().collection("users").addDocument(data: data, completion: completion)
         }
     }

@@ -154,6 +154,12 @@
 				4495EC2424647B9300F455FC /* View */,
 				4495EC2824647BE700F455FC /* VIewModel */,
 				44DDA5B72463B023008A42CF /* Controllers */,
+				44E312292469B84400C4513D /* MainTabController.swift */,
+				44E3122B2469B8A800C4513D /* FeedController.swift */,
+				44E3122D2469B8B400C4513D /* SearchController.swift */,
+				44E3122F2469B8C000C4513D /* UserController.swift */,
+				44E312312469B8D300C4513D /* FavoritesController.swift */,
+				44E312332469B8E100C4513D /* NotificationsController.swift */,
 				44E312352469CBEA00C4513D /* API */,
 				44DDA5B82463B031008A42CF /* Utilities */,
 				443587DF2463C21600A733C2 /* Sarabun */,
@@ -223,12 +229,6 @@
 			isa = PBXGroup;
 			children = (
 				44DDA5BC2463B055008A42CF /* Authentication */,
-				44E312292469B84400C4513D /* MainTabController.swift */,
-				44E3122B2469B8A800C4513D /* FeedController.swift */,
-				44E3122D2469B8B400C4513D /* SearchController.swift */,
-				44E3122F2469B8C000C4513D /* UserController.swift */,
-				44E312312469B8D300C4513D /* FavoritesController.swift */,
-				44E312332469B8E100C4513D /* NotificationsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
