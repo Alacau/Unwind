@@ -18,7 +18,7 @@ class MainTabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        logUserOut() // Uncomment this to log out
+        logUserOut() // Uncomment this to log out
         view.backgroundColor = .white
         authenticateUser()
     }

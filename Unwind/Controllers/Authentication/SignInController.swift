@@ -80,7 +80,7 @@ class SignInController: UIViewController {
             guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
             guard let tab = window.rootViewController as? MainTabController else { return }
             tab.authenticateUser()
-            
+
             self.dismiss(animated: true, completion: nil)
         }
     }

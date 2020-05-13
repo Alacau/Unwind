@@ -22,6 +22,7 @@
 		443587FB2463C21600A733C2 /* Sarabun-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 443587EA2463C21600A733C2 /* Sarabun-SemiBold.ttf */; };
 		444C54292469B5FA00325DBD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 444C54282469B5FA00325DBD /* GoogleService-Info.plist */; };
 		4495EC2A2464872400F455FC /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495EC292464872400F455FC /* SignUpController.swift */; };
+		44CA5F51246C80320024C31B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CA5F50246C80320024C31B /* Constants.swift */; };
 		44DDA5BB2463B051008A42CF /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA5BA2463B051008A42CF /* SignInController.swift */; };
 		44DDA5BE2463B06B008A42CF /* LandingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA5BD2463B06B008A42CF /* LandingController.swift */; };
 		44DDA5C02463B17D008A42CF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA5BF2463B17D008A42CF /* Extensions.swift */; };
@@ -79,6 +80,7 @@
 		443587EA2463C21600A733C2 /* Sarabun-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sarabun-SemiBold.ttf"; sourceTree = "<group>"; };
 		444C54282469B5FA00325DBD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4495EC292464872400F455FC /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		44CA5F50246C80320024C31B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		44DDA5BA2463B051008A42CF /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		44DDA5BD2463B06B008A42CF /* LandingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingController.swift; sourceTree = "<group>"; };
 		44DDA5BF2463B17D008A42CF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			children = (
 				44DDA5BF2463B17D008A42CF /* Extensions.swift */,
 				443587DD2463BF7000A733C2 /* Utilities.swift */,
+				44CA5F50246C80320024C31B /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				44DDA5C02463B17D008A42CF /* Extensions.swift in Sources */,
 				44E312302469B8C000C4513D /* UserController.swift in Sources */,
 				44E3122A2469B84400C4513D /* MainTabController.swift in Sources */,
+				44CA5F51246C80320024C31B /* Constants.swift in Sources */,
 				44E312342469B8E100C4513D /* NotificationsController.swift in Sources */,
 				4495EC2A2464872400F455FC /* SignUpController.swift in Sources */,
 				44DDA5BB2463B051008A42CF /* SignInController.swift in Sources */,

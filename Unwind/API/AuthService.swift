@@ -33,9 +33,10 @@ struct AuthService {
                 print("DEBUG: \(error.localizedDescription)")
                 return
             }
+            guard let uid = result?.user.uid else { return }
             
             let data = ["email": email, "username": username, "fullname": fullname]
-            Firestore.firestore().collection("users").addDocument(data: data, completion: completion)
+            REF_USERS.document(uid).setData(data, completion: completion)
         }
     }
 }
