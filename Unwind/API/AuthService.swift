@@ -18,6 +18,10 @@ struct AuthCredentials {
 struct AuthService {
     static let shared = AuthService()
     
+    func signInUser(email: String, password: String, completion: AuthDataResultCallback?) {
+        Auth.auth().signIn(withEmail: email, password: password, completion: completion)
+    }
+    
     func signUpUser(withCredentials credentials: AuthCredentials, completion: ((Error?) -> Void)?) {
         let email = credentials.email
         let password = credentials.password
