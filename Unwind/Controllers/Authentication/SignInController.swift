@@ -50,6 +50,8 @@ class SignInController: UIViewController {
         return imageView
     }()
     
+    private let tapGesture = UITapGestureRecognizer()
+    
     // MARK: - Lifecycles
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,21 +85,28 @@ class SignInController: UIViewController {
         }
     }
     
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     // MARK: - Helpers
     
     func configureUI() {
         view.backgroundColor = .white
+        view.addGestureRecognizer(tapGesture)
+        tapGesture.addTarget(self, action: #selector(dismissKeyboard))
         title = "Sign In"
             
         let stack = UIStackView(arrangedSubviews: [emailViewContainer, passwordViewContainer])
         stack.axis = .vertical
+        stack.spacing = 12
         view.addSubview(stack)
         stack.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingRight: 20)
         
-        view.addSubview(signInButton)
-        signInButton.anchor(top: stack.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 12, paddingLeft: 20, paddingRight: 20, height: 52)
-        
         view.addSubview(signInImageView)
         signInImageView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, height: view.frame.height / 2)
+        
+        view.addSubview(signInButton)
+        signInButton.anchor(top: stack.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 12, paddingLeft: 20, paddingRight: 20, height: 52)
     }
 }

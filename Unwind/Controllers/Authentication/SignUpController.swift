@@ -72,6 +72,8 @@ class SignUpController: UIViewController {
         return imageView
     }()
     
+    private let tapGesure = UITapGestureRecognizer()
+    
     // MARK: - Lifecycles
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,21 +111,28 @@ class SignUpController: UIViewController {
         }
     }
     
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+
     // MARK: - Helpers
     
     func configureUI() {
         view.backgroundColor = .white
+        view.addGestureRecognizer(tapGesure)
+        tapGesure.addTarget(self, action: #selector(dismissKeyboard))
         title = "Sign Up"
                 
         let stack = UIStackView(arrangedSubviews: [emailViewContainer, passwordViewContainer, fullnameViewContainer, usernameViewContainer])
         stack.axis = .vertical
+        stack.spacing = 12
         view.addSubview(stack)
         stack.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 8, paddingLeft: 20, paddingRight: 20)
         
+        view.addSubview(signUpImageView)
+        signUpImageView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, height: view.frame.height / 2.5)
+        
         view.addSubview(signUpButton)
         signUpButton.anchor(top: stack.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 12, paddingLeft: 20, paddingRight: 20, height: 52)
-        
-        view.addSubview(signUpImageView)
-        signUpImageView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, height: view.frame.height / 2.8)
     }
 }
