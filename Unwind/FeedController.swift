@@ -55,7 +55,7 @@ class FeedController: UITableViewController {
         tableView.register(ArticleCell.self, forCellReuseIdentifier: articleIdentifier)
         
         view.addSubview(createButton)
-        createButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingBottom: 20, paddingRight: 20)
+        createButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingBottom: 20, paddingRight: 20)
     }
     
     func configureNavigationUI() {
@@ -65,7 +65,7 @@ class FeedController: UITableViewController {
     }
 }
 
-// MARK: - UICollectionViewDataSource, UICollectionViewDelegate
+// MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension FeedController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,5 +75,9 @@ extension FeedController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: articleIdentifier, for: indexPath) as! ArticleCell
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Push navigation to view article -> Implement UIScrollView?
     }
 }
