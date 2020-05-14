@@ -27,7 +27,7 @@ class MainTabController: UITabBarController {
     
     func configureTabs() {
         // Embed controllers in navigation controller
-        let articles = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
+        let articles = FeedController()
         let navItem1 = createTabControllers(image: UIImage(named: "articles"), title: "Articles", viewController: articles)
         
         let search = SearchController()

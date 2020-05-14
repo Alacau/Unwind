@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArticleCell: UICollectionViewCell {
+class ArticleCell: UITableViewCell {
     
     // MARK: - Properties
     
@@ -16,7 +16,8 @@ class ArticleCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 120 / 4 // cell height / 4
+        imageView.setDimensions(width: 108, height: 96)
+        imageView.layer.cornerRadius = 96 / 4
         imageView.layer.borderWidth = 0.1
         imageView.layer.borderColor = UIColor.black.cgColor
         imageView.image = UIImage(named: "landing")
@@ -33,8 +34,9 @@ class ArticleCell: UICollectionViewCell {
     
     // MARK: - Lifecycles
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         backgroundColor = .white
         
         let articleStack = UIStackView(arrangedSubviews: [articleImageView, articleTitle])
@@ -43,7 +45,6 @@ class ArticleCell: UICollectionViewCell {
         
         addSubview(articleStack)
         articleStack.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 12, paddingRight: 12)
-        articleImageView.anchor(width: frame.width / 3.5)
     }
     
     required init?(coder: NSCoder) {

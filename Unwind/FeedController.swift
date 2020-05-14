@@ -10,7 +10,7 @@ import UIKit
 
 private let articleIdentifier = "ArticleCell"
 
-class FeedController: UICollectionViewController {
+class FeedController: UITableViewController {
     
     // MARK: - Properties
     
@@ -48,10 +48,11 @@ class FeedController: UICollectionViewController {
     // MARK: - Helpers
     
     func configureUI() {
-        collectionView.backgroundColor = .white
+        tableView.backgroundColor = .white
+        tableView.separatorStyle = .none
         configureNavigationUI()
-        
-        collectionView.register(ArticleCell.self, forCellWithReuseIdentifier: articleIdentifier)
+                
+        tableView.register(ArticleCell.self, forCellReuseIdentifier: articleIdentifier)
         
         view.addSubview(createButton)
         createButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingBottom: 20, paddingRight: 20)
@@ -67,24 +68,12 @@ class FeedController: UICollectionViewController {
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 
 extension FeedController {
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 6
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: articleIdentifier, for: indexPath) as! ArticleCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: articleIdentifier, for: indexPath) as! ArticleCell
         return cell
-    }
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-
-extension FeedController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 132)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
     }
 }
