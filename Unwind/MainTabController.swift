@@ -18,7 +18,7 @@ class MainTabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        logUserOut() // Uncomment this to log out
+//        logUserOut() // Uncomment this to log out
         view.backgroundColor = .white
         authenticateUser()
     }
@@ -27,7 +27,7 @@ class MainTabController: UITabBarController {
     
     func configureTabs() {
         // Embed controllers in navigation controller
-        let articles = FeedController()
+        let articles = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
         let navItem1 = createTabControllers(image: UIImage(named: "articles"), title: "Articles", viewController: articles)
         
         let search = SearchController()
