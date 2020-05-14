@@ -16,7 +16,7 @@ class ArticleCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 120 / 4
+        imageView.layer.cornerRadius = 120 / 4 // cell height / 4
         imageView.layer.borderWidth = 0.1
         imageView.layer.borderColor = UIColor.black.cgColor
         imageView.image = UIImage(named: "landing")
@@ -42,8 +42,8 @@ class ArticleCell: UICollectionViewCell {
         articleStack.spacing = 12
         
         addSubview(articleStack)
-        articleStack.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 12, paddingLeft: 20, paddingBottom: 12, paddingRight: 20)
-        articleImageView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 12, width: frame.width / 3.5)
+        articleStack.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 12, paddingRight: 12)
+        articleImageView.anchor(width: frame.width / 3.5)
     }
     
     required init?(coder: NSCoder) {

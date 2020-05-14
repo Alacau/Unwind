@@ -14,12 +14,35 @@ class FeedController: UICollectionViewController {
     
     // MARK: - Properties
     
+    private let createButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "create"), for: .normal)
+        button.backgroundColor = .unwindRed
+        button.setDimensions(width: 64, height: 64)
+        button.tintColor = .white
+        button.layer.masksToBounds = false
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+        button.layer.cornerRadius = 64 / 2
+        button.addTarget(self, action: #selector(handleCreateTapped), for: .touchUpInside)
+        return button
+    }()
+    
     // MARK: - Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+    }
+    
+    // MARK: - Selectors
+    
+    @objc func handleCreateTapped() {
+        let createController = UINavigationController(rootViewController: CreateController())
+        createController.modalPresentationStyle = .fullScreen
+        present(createController, animated: true, completion: nil)
     }
     
     // MARK: - Helpers
@@ -29,6 +52,9 @@ class FeedController: UICollectionViewController {
         configureNavigationUI()
         
         collectionView.register(ArticleCell.self, forCellWithReuseIdentifier: articleIdentifier)
+        
+        view.addSubview(createButton)
+        createButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingBottom: 20, paddingRight: 20)
     }
     
     func configureNavigationUI() {
@@ -37,6 +63,8 @@ class FeedController: UICollectionViewController {
         navigationItem.title = "Articles"
     }
 }
+
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 
 extension FeedController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -48,6 +76,8 @@ extension FeedController {
         return cell
     }
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension FeedController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
