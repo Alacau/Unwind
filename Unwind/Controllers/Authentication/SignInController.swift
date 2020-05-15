@@ -38,7 +38,7 @@ class SignInController: UIViewController {
     }()
     
     private let signInButton: UIButton = {
-        let button = Utilities().authButton(title: "Sign In")
+        let button = Utilities().simpleButton(title: "Sign In", cornerRadius: 52 / 2)
         button.addTarget(self, action: #selector(handleSignInTapped), for: .touchUpInside)
         return button
     }()

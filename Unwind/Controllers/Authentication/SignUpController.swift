@@ -60,7 +60,7 @@ class SignUpController: UIViewController {
     }()
     
     private let signUpButton: UIButton = {
-        let button = Utilities().authButton(title: "Sign Up")
+        let button = Utilities().simpleButton(title: "Sign Up", cornerRadius: 52 / 2)
         button.addTarget(self, action: #selector(handleSignUpTapped), for: .touchUpInside)
         return button
     }()

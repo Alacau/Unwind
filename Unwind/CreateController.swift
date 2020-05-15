@@ -19,12 +19,8 @@ class CreateController: UITableViewController {
     private let imagePicker = UIImagePickerController()
     
     private lazy var postButton: UIButton = {
-        let button = UIButton(type: .system)
-        let title = NSAttributedString(string: "Post", attributes: [.font: UIFont(name: "Sarabun-SemiBold", size: 18)!, .foregroundColor: UIColor.white])
-        button.setAttributedTitle(title, for: .normal)
+        let button = Utilities().simpleButton(title: "Post", cornerRadius: 32 / 2)
         button.setDimensions(width: 64, height: 32)
-        button.backgroundColor = .unwindRed
-        button.layer.cornerRadius = 32 / 2
         button.addTarget(self, action: #selector(handlePostTapped), for: .touchUpInside)
         return button
     }()

@@ -18,13 +18,13 @@ class Utilities {
         return label
     }
     
-    func authButton(title: String) -> UIButton {
+    func simpleButton(title: String, cornerRadius: CGFloat) -> UIButton {
         let button = UIButton(type: .system)
         let title = NSAttributedString(string: title, attributes: [.font : UIFont(name: "Sarabun-Bold", size: 20)!, .foregroundColor : UIColor.white])
         button.setAttributedTitle(title, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .unwindRed
-        button.layer.cornerRadius = 52 / 2
+        button.layer.cornerRadius = cornerRadius
         
         return button
     }
@@ -83,5 +83,17 @@ class Utilities {
         button.layer.cornerRadius = 64 / 2
         
         return button
+    }
+    
+    func simpleImageView(image: UIImage?, cornerRadius: CGFloat, borderWidth: CGFloat) -> UIImageView {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.image = image
+        imageView.layer.cornerRadius = cornerRadius
+        imageView.layer.borderWidth = borderWidth
+        imageView.layer.borderColor = UIColor.black.cgColor
+        
+        return imageView
     }
 }

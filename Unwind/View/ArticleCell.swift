@@ -13,14 +13,8 @@ class ArticleCell: UITableViewCell {
     // MARK: - Properties
     
     private var articleImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
+        let imageView = Utilities().simpleImageView(image: UIImage(named: "landing"), cornerRadius: 96 / 4, borderWidth: 0.1)
         imageView.setDimensions(width: 108, height: 96)
-        imageView.layer.cornerRadius = 96 / 4
-        imageView.layer.borderWidth = 0.1
-        imageView.layer.borderColor = UIColor.black.cgColor
-        imageView.image = UIImage(named: "landing")
         return imageView
     }()
     

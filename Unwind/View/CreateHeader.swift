@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CreateHeaderDelegate: class {
+protocol CreateHeaderDelegate: AnyObject {
     func handleImageViewTapped()
 }
 
@@ -19,15 +19,9 @@ class CreateHeader: UIView {
     weak var delegate: CreateHeaderDelegate?
     
     let createImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
+        let imageView = Utilities().simpleImageView(image: UIImage(named: "create-image"), cornerRadius: 96 / 4, borderWidth: 0.1)
         imageView.isUserInteractionEnabled = true
-        imageView.image = UIImage(named: "landing")
         imageView.setDimensions(width: 108, height: 96)
-        imageView.layer.cornerRadius = 96 / 4
-        imageView.layer.borderWidth = 0.2
-        imageView.layer.borderColor = UIColor.black.cgColor
         return imageView
     }()
     
