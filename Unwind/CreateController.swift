@@ -8,9 +8,26 @@
 
 import UIKit
 
-class CreateController: UIViewController {
+private let createIdentifier = "CreateCell"
+
+class CreateController: UITableViewController {
    
     // MARK: - Properties
+    
+    private let createHeader = CreateHeader()
+    private let tapGesture = UITapGestureRecognizer()
+    private let imagePicker = UIImagePickerController()
+    
+    private lazy var postButton: UIButton = {
+        let button = UIButton(type: .system)
+        let title = NSAttributedString(string: "Post", attributes: [.font: UIFont(name: "Sarabun-SemiBold", size: 18)!, .foregroundColor: UIColor.white])
+        button.setAttributedTitle(title, for: .normal)
+        button.setDimensions(width: 64, height: 32)
+        button.backgroundColor = .unwindRed
+        button.layer.cornerRadius = 32 / 2
+        button.addTarget(self, action: #selector(handlePostTapped), for: .touchUpInside)
+        return button
+    }()
     
     // MARK: - Lifecycles
     
@@ -26,14 +43,25 @@ class CreateController: UIViewController {
         configureUI()
     }
     
+    // MARK: - Selectors
+    
     @objc func handleCancel() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func handlePostTapped() {
+        print("DEBUG: Handle post tapped here...")
         dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Helpers
     
     func configureUI() {
-        view.backgroundColor = .white
+        tableView.backgroundColor = .white
+        tableView.register(CreateCell.self, forCellReuseIdentifier: createIdentifier)
+        
+        createHeader.createImageView.addGestureRecognizer(tapGesture)
+        tapGesture.addTarget(self, action: #selector(handleImageViewTapped))
         
         configureNavigationUI()
     }
@@ -44,5 +72,43 @@ class CreateController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage() // Removes underline view of navigation
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(handleCancel))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: postButton)
+    }
+}
+
+extension CreateController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: createIdentifier, for: indexPath) as! CreateCell
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        createHeader.delegate = self
+        return createHeader
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 128
+    }
+}
+
+extension CreateController: CreateHeaderDelegate {
+    @objc func handleImageViewTapped() {
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+    }
+}
+
+extension CreateController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let articleImage = info[.editedImage] as? UIImage else { return }
+        createHeader.createImageView.image = articleImage
+        
+        dismiss(animated: true, completion: nil)
     }
 }
