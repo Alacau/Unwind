@@ -108,7 +108,10 @@ class CreateController: UITableViewController {
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage() // Removes underline view of navigation
 
+        let logoImageView = UIImageView(image: UIImage(named: "nav-logo"))
+        logoImageView.contentMode = .scaleAspectFill
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(handleCancel))
+        navigationItem.titleView = logoImageView
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: postButton)
     }
 }
