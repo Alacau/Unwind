@@ -78,18 +78,6 @@ class CreateController: UITableViewController {
         configureUI()
     }
     
-    override func loadView() {
-        super.loadView()
-        
-        captionCell.contentView.addSubview(captionTextView)
-        captionCell.contentView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        captionTextView.anchor(top: captionCell.contentView.topAnchor, left: captionCell.contentView.leftAnchor, bottom: captionCell.contentView.bottomAnchor, right: captionCell.contentView.rightAnchor, paddingLeft: 20, paddingBottom: 8, paddingRight: 20)
-        
-        contentCell.contentView.addSubview(contentTextView)
-        contentCell.contentView.heightAnchor.constraint(equalToConstant: 240).isActive = true
-        contentTextView.anchor(top: contentCell.contentView.topAnchor, left: contentCell.contentView.leftAnchor, bottom: contentCell.contentView.bottomAnchor, right: contentCell.contentView.rightAnchor, paddingLeft: 20, paddingBottom: 8, paddingRight: 20)
-    }
-    
     // MARK: - Selectors
     
     @objc func handleCancel() {
@@ -121,6 +109,14 @@ class CreateController: UITableViewController {
         tapGesture.addTarget(self, action: #selector(handleImageViewTapped))
         
         configureNavigationUI()
+        
+        captionCell.contentView.addSubview(captionTextView)
+        captionCell.contentView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        captionTextView.anchor(top: captionCell.contentView.topAnchor, left: captionCell.contentView.leftAnchor, bottom: captionCell.contentView.bottomAnchor, right: captionCell.contentView.rightAnchor, paddingLeft: 20, paddingBottom: 8, paddingRight: 20)
+        
+        contentCell.contentView.addSubview(contentTextView)
+        contentCell.contentView.heightAnchor.constraint(equalToConstant: 240).isActive = true
+        contentTextView.anchor(top: contentCell.contentView.topAnchor, left: contentCell.contentView.leftAnchor, bottom: contentCell.contentView.bottomAnchor, right: contentCell.contentView.rightAnchor, paddingLeft: 20, paddingBottom: 8, paddingRight: 20)
     }
     
     func configureNavigationUI() {
