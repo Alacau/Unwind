@@ -12,3 +12,4 @@ let FS_REF = Firestore.firestore()
 
 let REF_USERS = FS_REF.collection("users")
 let REF_ARTICLES = FS_REF.collection("articles")
+let REF_USER_ARTICLES = FS_REF.collection("user-articles")

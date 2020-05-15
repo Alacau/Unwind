@@ -17,6 +17,10 @@ class FeedController: UITableViewController {
     
     var user: User?
     
+    var articles = [Articles]() {
+        didSet { tableView.reloadData() }
+    }
+    
     private let createButton: UIButton = {
         let button = Utilities().createButton(image: UIImage(named: "create"))
         button.addTarget(self, action: #selector(handleCreateTapped), for: .touchUpInside)
@@ -24,6 +28,11 @@ class FeedController: UITableViewController {
     }()
     
     // MARK: - Lifecycles
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchArticles()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +47,12 @@ class FeedController: UITableViewController {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         UserService.shared.fetchCurrentUser(uid: uid) { (user) in
             self.user = user
+        }
+    }
+    
+    func fetchArticles() {
+        ArticleService.shared.fetchArticles { (articles) in
+            self.articles = articles
         }
     }
     
@@ -75,11 +90,12 @@ class FeedController: UITableViewController {
 
 extension FeedController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return articles.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: articleIdentifier, for: indexPath) as! ArticleCell
+        cell.article = articles[indexPath.row]
         return cell
     }
     
