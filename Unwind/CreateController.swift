@@ -14,6 +14,34 @@ class CreateController: UITableViewController {
    
     // MARK: - Properties
     
+    private let captionCell: UITableViewCell = {
+        let cell = UITableViewCell()
+        return cell
+    }()
+    
+    private let contentCell: UITableViewCell = {
+        let cell = UITableViewCell()
+        return cell
+    }()
+    
+    private let captionTextView: CaptionTextView = {
+        let textView = CaptionTextView()
+        textView.placeholderLabel.text = "Caption"
+        textView.placeholderLabel.font = UIFont(name: "Sarabun", size: 16)
+        textView.font = UIFont(name: "Sarabun", size: 16)
+        textView.isScrollEnabled = true
+        return textView
+    }()
+    
+    private let contentTextView: CaptionTextView = {
+        let textView = CaptionTextView()
+        textView.placeholderLabel.text = "Content"
+        textView.placeholderLabel.font = UIFont(name: "Sarabun", size: 16)
+        textView.font = UIFont(name: "Sarabun", size: 16)
+        textView.isScrollEnabled = true
+        return textView
+    }()
+    
     private let createHeader = CreateHeader()
     private let tapGesture = UITapGestureRecognizer()
     private let imagePicker = UIImagePickerController()
@@ -39,6 +67,18 @@ class CreateController: UITableViewController {
         configureUI()
     }
     
+    override func loadView() {
+        super.loadView()
+        
+        captionCell.contentView.addSubview(captionTextView)
+        captionCell.contentView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        captionTextView.anchor(top: captionCell.contentView.topAnchor, left: captionCell.contentView.leftAnchor, bottom: captionCell.contentView.bottomAnchor, right: captionCell.contentView.rightAnchor, paddingLeft: 20, paddingBottom: 8, paddingRight: 20)
+        
+        contentCell.contentView.addSubview(contentTextView)
+        contentCell.contentView.heightAnchor.constraint(equalToConstant: 240).isActive = true
+        contentTextView.anchor(top: contentCell.contentView.topAnchor, left: contentCell.contentView.leftAnchor, bottom: contentCell.contentView.bottomAnchor, right: contentCell.contentView.rightAnchor, paddingLeft: 20, paddingBottom: 8, paddingRight: 20)
+    }
+    
     // MARK: - Selectors
     
     @objc func handleCancel() {
@@ -54,6 +94,7 @@ class CreateController: UITableViewController {
     
     func configureUI() {
         tableView.backgroundColor = .white
+        tableView.tableFooterView = UIView()
         tableView.register(CreateCell.self, forCellReuseIdentifier: createIdentifier)
         
         createHeader.createImageView.addGestureRecognizer(tapGesture)
@@ -73,13 +114,21 @@ class CreateController: UITableViewController {
 }
 
 extension CreateController {
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: createIdentifier, for: indexPath) as! CreateCell
-        return cell
+        switch indexPath.row {
+            case 0: return captionCell
+            case 1: return contentCell
+            default: fatalError("Cell indexPath doesn't exist")
+        }
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
