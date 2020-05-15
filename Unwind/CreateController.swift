@@ -113,6 +113,7 @@ class CreateController: UITableViewController {
     
     func configureUI() {
         tableView.backgroundColor = .white
+        tableView.allowsSelection = false
         tableView.tableFooterView = UIView()
         tableView.register(CreateCell.self, forCellReuseIdentifier: createIdentifier)
         
