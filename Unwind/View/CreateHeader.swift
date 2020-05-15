@@ -25,7 +25,7 @@ class CreateHeader: UIView {
         return imageView
     }()
     
-    private let titleTextView = CaptionTextView()
+    let titleTextView = CaptionTextView()
     
     private let separatorView: UIView = {
         let view = UIView()

@@ -14,6 +14,8 @@ class CreateController: UITableViewController {
    
     // MARK: - Properties
     
+    private let user: User
+    
     private let captionCell: UITableViewCell = {
         let cell = UITableViewCell()
         return cell
@@ -55,6 +57,15 @@ class CreateController: UITableViewController {
     
     // MARK: - Lifecycles
     
+    init(user: User) {
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -86,8 +97,16 @@ class CreateController: UITableViewController {
     }
     
     @objc func handlePostTapped() {
-        print("DEBUG: Handle post tapped here...")
-        dismiss(animated: true, completion: nil)
+        guard let title = createHeader.titleTextView.text else { return }
+        guard let caption = captionTextView.text  else { return }
+        guard let content = contentTextView.text else { return }
+        
+        ArticleService.shared.postArticle(title: title, caption: caption, content: content) { (error) in
+            if let error = error {
+                print("DEBUG: \(error.localizedDescription)")
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     // MARK: - Helpers

@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 private let articleIdentifier = "ArticleCell"
 
 class FeedController: UITableViewController {
     
     // MARK: - Properties
+    
+    var user: User?
     
     private let createButton: UIButton = {
         let button = Utilities().createButton(image: UIImage(named: "create"))
@@ -26,12 +29,24 @@ class FeedController: UITableViewController {
         super.viewDidLoad()
         
         configureUI()
+        fetchCurrentUser()
+    }
+    
+    // MARK: - API
+    
+    func fetchCurrentUser() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        UserService.shared.fetchCurrentUser(uid: uid) { (user) in
+            self.user = user
+        }
     }
     
     // MARK: - Selectors
     
     @objc func handleCreateTapped() {
-        let createController = UINavigationController(rootViewController: CreateController())
+        guard let user = user else { return }
+        
+        let createController = UINavigationController(rootViewController: CreateController(user: user))
         createController.modalPresentationStyle = .fullScreen
         present(createController, animated: true, completion: nil)
     }

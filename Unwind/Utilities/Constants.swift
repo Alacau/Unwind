@@ -11,3 +11,4 @@ import Firebase
 let FS_REF = Firestore.firestore()
 
 let REF_USERS = FS_REF.collection("users")
+let REF_ARTICLES = FS_REF.collection("articles")
