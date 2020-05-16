@@ -126,6 +126,7 @@ class CreateController: UITableViewController {
 
         let logoImageView = UIImageView(image: UIImage(named: "nav-logo"))
         logoImageView.contentMode = .scaleAspectFill
+        logoImageView.setDimensions(width: 64, height: 64)
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(handleCancel))
         navigationItem.titleView = logoImageView
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: postButton)
