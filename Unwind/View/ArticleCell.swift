@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ArticleCell: UITableViewCell {
     
@@ -53,5 +54,6 @@ class ArticleCell: UITableViewCell {
     
     func configure() {
         articleTitle.text = article?.title
+        articleImageView.sd_setImage(with: article?.image)
     }
 }

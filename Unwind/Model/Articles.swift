@@ -9,16 +9,24 @@
 import Foundation
 
 struct Articles {
+    let user: User
     let uid: String
     let title: String
     let caption: String
     let content: String
+    var image: URL?
     
-    init(uid: String, dictionary: [String: AnyObject]?) {
+    init(user: User, uid: String, dictionary: [String: Any]) {
+        self.user = user
         self.uid = uid
         
-        self.title = dictionary?["title"] as? String ?? ""
-        self.caption = dictionary?["caption"] as? String ?? ""
-        self.content = dictionary?["content"] as? String ?? ""
+        self.title = dictionary["title"] as? String ?? ""
+        self.caption = dictionary["caption"] as? String ?? ""
+        self.content = dictionary["content"] as? String ?? ""
+        
+        if let imageURL = dictionary["imageURL"] as? String {
+            guard let url = URL(string: imageURL) else { return }
+            self.image = url
+        }
     }
 }

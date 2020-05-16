@@ -98,7 +98,7 @@ class SignUpController: UIViewController {
         
         let credentials = AuthCredentials(email: email, password: password, fullname: fullname, username: username)
         
-        AuthService.shared.signUpUser(withCredentials: credentials) { (error) in
+        AuthService.shared.signUpUser(withCredentials: credentials) { (error, reference) in
             if let error = error {
                 print("DEBUG: \(error.localizedDescription)")
                 return

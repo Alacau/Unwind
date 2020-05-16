@@ -7,6 +7,7 @@
 //
 
 import Firebase
+import FirebaseDatabase
 
 struct AuthCredentials {
     let email: String
@@ -18,11 +19,11 @@ struct AuthCredentials {
 struct AuthService {
     static let shared = AuthService()
     
-    func signInUser(email: String, password: String, completion: AuthDataResultCallback?) {
+    func signInUser(email: String, password: String, completion: (AuthDataResultCallback?)) {
         Auth.auth().signIn(withEmail: email, password: password, completion: completion)
     }
     
-    func signUpUser(withCredentials credentials: AuthCredentials, completion: ((Error?) -> Void)?) {
+    func signUpUser(withCredentials credentials: AuthCredentials, completion: @escaping((Error?, DatabaseReference) -> Void)) {
         let email = credentials.email
         let password = credentials.password
         let fullname = credentials.fullname
@@ -36,7 +37,7 @@ struct AuthService {
             guard let uid = result?.user.uid else { return }
             
             let data = ["email": email, "username": username, "fullname": fullname]
-            REF_USERS.document(uid).setData(data, completion: completion)
+            REF_USERS.child(uid).updateChildValues(data, withCompletionBlock: completion)
         }
     }
 }

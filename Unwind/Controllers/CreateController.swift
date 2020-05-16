@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 private let createIdentifier = "CreateCell"
 
@@ -88,10 +89,12 @@ class CreateController: UITableViewController {
         guard let title = createHeader.titleTextView.text else { return }
         guard let caption = captionTextView.text  else { return }
         guard let content = contentTextView.text else { return }
+        guard let image = createHeader.createImageView.image else { return }
         
-        ArticleService.shared.postArticle(title: title, caption: caption, content: content) { (error) in
+        ArticleService.shared.postArticle(title: title, caption: caption, content: content, image: image) { (error, reference) in
             if let error = error {
                 print("DEBUG: \(error.localizedDescription)")
+                return
             }
             self.dismiss(animated: true, completion: nil)
         }
@@ -103,7 +106,6 @@ class CreateController: UITableViewController {
         tableView.backgroundColor = .white
         tableView.allowsSelection = false
         tableView.tableFooterView = UIView()
-        tableView.register(CreateCell.self, forCellReuseIdentifier: createIdentifier)
         
         createHeader.createImageView.addGestureRecognizer(tapGesture)
         tapGesture.addTarget(self, action: #selector(handleImageViewTapped))

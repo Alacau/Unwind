@@ -7,46 +7,57 @@
 //
 
 import Firebase
+import FirebaseDatabase
 
 struct ArticleService {
     static let shared = ArticleService()
         
-    func postArticle(title: String, caption: String, content: String, completion: ((Error?) -> Void)?) {
+    func postArticle(title: String, caption: String, content: String, image: UIImage, completion: @escaping(Error?, DatabaseReference) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let imageData = image.jpegData(compressionQuality: 0.3) else { return }
+        let fileName = NSUUID().uuidString
+        let storageReference = STORAGE_ARTICLE_IMAGES.child(fileName)
         
-        let values = [
-            "uid": uid,
-            "timestamp": Int(NSDate().timeIntervalSince1970),
-            "favorites": 0,
-            "title": title,
-            "caption": caption,
-            "content": content
-            ] as [String : Any]
-        
-        let articleID = REF_ARTICLES.document()
-        articleID.setData(values) { (error) in
+        storageReference.putData(imageData, metadata: nil) { (metadata, error) in
             if let error = error {
                 print("DEBUG: \(error.localizedDescription)")
                 return
             }
-            REF_USER_ARTICLES.document(uid).updateData([articleID.documentID: 1], completion: completion)
+            storageReference.downloadURL { (url, error) in
+                if let error = error {
+                    print("DEBUG: \(error.localizedDescription)")
+                    return
+                }
+                guard let url = url?.absoluteString else { return }
+                let values = [
+                    "uid": uid,
+                    "timestamp": Int(NSDate().timeIntervalSince1970),
+                    "favorites": 0,
+                    "title": title,
+                    "caption": caption,
+                    "content": content,
+                    "imageURL": url
+                    ] as [String : Any]
+                
+                REF_ARTICLES.childByAutoId().updateChildValues(values) { (error, reference) in
+                    guard let articleID = reference.key else { return }
+                    REF_USER_ARTICLES.child(uid).updateChildValues([articleID: 1], withCompletionBlock: completion)
+                }
+            }
         }
     }
     
     func fetchArticles(completion: @escaping([Articles]) -> Void) {
         var articles = [Articles]()
-        REF_ARTICLES.getDocuments { (snapshot, error) in
-            if let error = error {
-                print("DEGBUG: \(error.localizedDescription)")
-                return
-            }
-            for document in snapshot!.documents {
-                guard let dictionary = document.data() as [String: AnyObject]? else { return }
-                let uid = document.documentID
-                let article = Articles(uid: uid, dictionary: dictionary)
+        REF_ARTICLES.observe(.childAdded) { (snapshot) in
+            guard let dictionary = snapshot.value as? [String: Any] else { return }
+            guard let uid = dictionary["uid"] as? String else { return }
+            
+            UserService.shared.fetchCurrentUser(uid: uid) { (user) in
+                let article = Articles(user: user, uid: uid, dictionary: dictionary)
                 articles.append(article)
+                completion(articles)
             }
-            completion(articles)
         }
     }
 }

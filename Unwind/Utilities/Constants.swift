@@ -7,9 +7,13 @@
 //
 
 import Firebase
+import FirebaseDatabase
 
-let FS_REF = Firestore.firestore()
+let STORAGE_REF = Storage.storage().reference()
+let STORAGE_ARTICLE_IMAGES = STORAGE_REF.child("article-images")
 
-let REF_USERS = FS_REF.collection("users")
-let REF_ARTICLES = FS_REF.collection("articles")
-let REF_USER_ARTICLES = FS_REF.collection("user-articles")
+let DB_REF = Database.database().reference()
+
+let REF_USERS = DB_REF.child("users")
+let REF_ARTICLES = DB_REF.child("articles")
+let REF_USER_ARTICLES = DB_REF.child("user-articles")

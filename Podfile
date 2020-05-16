@@ -7,7 +7,7 @@ target 'Unwind' do
 
   # Pods for Unwind
     pod 'Firebase/Auth'
-    pod 'Firebase/Firestore'
+    pod 'Firebase/Database'
     pod 'Firebase/Storage'
     pod 'SDWebImage'
 

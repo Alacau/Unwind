@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		440B89DD246E5BBD0068DB45 /* CreateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440B89DC246E5BBD0068DB45 /* CreateCell.swift */; };
 		440B89DF246E60610068DB45 /* CreateHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440B89DE246E60610068DB45 /* CreateHeader.swift */; };
 		440B89E1246E64250068DB45 /* CaptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440B89E0246E64250068DB45 /* CaptionTextView.swift */; };
 		44299E15245FF6440084BCC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44299E14245FF6440084BCC1 /* AppDelegate.swift */; };
@@ -68,7 +67,6 @@
 		0B087097AD270602280B6A4C /* Pods-Unwind.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unwind.debug.xcconfig"; path = "Target Support Files/Pods-Unwind/Pods-Unwind.debug.xcconfig"; sourceTree = "<group>"; };
 		1444A25AD9198126ACB9D3C5 /* Pods-Unwind.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unwind.release.xcconfig"; path = "Target Support Files/Pods-Unwind/Pods-Unwind.release.xcconfig"; sourceTree = "<group>"; };
 		31BE26ED055B59EADF6C91BB /* Pods_UnwindTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnwindTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		440B89DC246E5BBD0068DB45 /* CreateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCell.swift; sourceTree = "<group>"; };
 		440B89DE246E60610068DB45 /* CreateHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHeader.swift; sourceTree = "<group>"; };
 		440B89E0246E64250068DB45 /* CaptionTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionTextView.swift; sourceTree = "<group>"; };
 		44299E11245FF6440084BCC1 /* Unwind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unwind.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				44F56F99246D961800188BB5 /* ArticleCell.swift */,
-				440B89DC246E5BBD0068DB45 /* CreateCell.swift */,
 				440B89DE246E60610068DB45 /* CreateHeader.swift */,
 				440B89E0246E64250068DB45 /* CaptionTextView.swift */,
 			);
@@ -574,7 +571,6 @@
 				44299E17245FF6440084BCC1 /* SceneDelegate.swift in Sources */,
 				44E3122C2469B8A800C4513D /* FeedController.swift in Sources */,
 				44DDA5BE2463B06B008A42CF /* LandingController.swift in Sources */,
-				440B89DD246E5BBD0068DB45 /* CreateCell.swift in Sources */,
 				44F56F9E246DAC2900188BB5 /* User.swift in Sources */,
 				44F56F9C246DAB0200188BB5 /* Articles.swift in Sources */,
 				44E312322469B8D300C4513D /* FavoritesController.swift in Sources */,

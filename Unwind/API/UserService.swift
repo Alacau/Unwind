@@ -12,13 +12,9 @@ struct UserService {
     static let shared = UserService()
     
     func fetchCurrentUser(uid: String, completion: @escaping(User) -> Void) {
-        REF_USERS.document(uid).getDocument { (snapshot, error) in
-            if let error = error {
-                print("DEBUG: \(error.localizedDescription)")
-                return
-            }
-            guard let dictionary = snapshot?.data() as [String: AnyObject]? else { return }
-            let user = User(uid: uid, dictionary: dictionary)
+        REF_USERS.child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            guard let dictionary = snapshot.value as? [String: AnyObject] else { return }
+            let user = User.init(uid: uid, dictionary: dictionary)
             completion(user)
         }
     }
