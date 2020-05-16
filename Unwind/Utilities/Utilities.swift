@@ -20,7 +20,7 @@ class Utilities {
     
     func simpleButton(title: String, cornerRadius: CGFloat) -> UIButton {
         let button = UIButton(type: .system)
-        let title = NSAttributedString(string: title, attributes: [.font : UIFont(name: "Sarabun-Bold", size: 20)!, .foregroundColor : UIColor.white])
+        let title = NSAttributedString(string: title, attributes: [.font : UIFont(name: "Sarabun-Bold", size: 18)!, .foregroundColor : UIColor.white])
         button.setAttributedTitle(title, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .unwindRed
