@@ -9,6 +9,7 @@ target 'Unwind' do
     pod 'Firebase/Auth'
     pod 'Firebase/Firestore'
     pod 'Firebase/Storage'
+    pod 'SDWebImage'
 
   target 'UnwindTests' do
     inherit! :search_paths
