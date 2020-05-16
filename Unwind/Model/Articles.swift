@@ -15,6 +15,8 @@ struct Articles {
     let caption: String
     let content: String
     var image: URL?
+    var timestamp: Date!
+    // favorites
     
     init(user: User, uid: String, dictionary: [String: Any]) {
         self.user = user
@@ -27,6 +29,9 @@ struct Articles {
         if let imageURL = dictionary["imageURL"] as? String {
             guard let url = URL(string: imageURL) else { return }
             self.image = url
+        }
+        if let timestamp = dictionary["timestamp"] as? Double {
+            self.timestamp = Date(timeIntervalSince1970: timestamp)
         }
     }
 }
