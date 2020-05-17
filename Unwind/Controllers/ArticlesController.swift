@@ -17,8 +17,34 @@ class ArticlesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemPink
+        configureUI()
+    }
+    
+    // MARK: - Selectors
+    
+    @objc func handleCancel() {
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Helpers
+    
+    func configureUI() {
+        view.backgroundColor = .white
+        
+        configureNavigationUI()
+    }
+    
+    func configureNavigationUI() {
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.tintColor = .unwindRed
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.shadowImage = UIImage() // Removes underline view of navigation
+
+        let logoImageView = UIImageView(image: UIImage(named: "nav-logo"))
+        logoImageView.contentMode = .scaleAspectFill
+        logoImageView.setDimensions(width: 64, height: 64)
+
+        navigationItem.titleView = logoImageView
+        
+    }
 }
