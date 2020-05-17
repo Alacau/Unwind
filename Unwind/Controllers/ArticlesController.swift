@@ -20,7 +20,7 @@ class ArticlesController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "12 reasons why Ashley’s a clown and why she’s not as basic as she thinks she is"
+        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         label.font = UIFont(name: "Sarabun-SemiBold", size: 18)
         return label
     }()
@@ -28,7 +28,7 @@ class ArticlesController: UIViewController {
     private let captionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "This is probably going to be a subcaption for the article being viewed! :)"
+        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         label.font = UIFont(name: "Sarabun", size: 16)
         return label
     }()
@@ -96,11 +96,11 @@ class ArticlesController: UIViewController {
         
         let userStack = UIStackView(arrangedSubviews: [userProfileImage, fullnameLabel, dateLabel])
         userStack.axis = .horizontal
-        userStack.spacing = 12
+        userStack.spacing = 16
         
         let stack = UIStackView(arrangedSubviews: [titleLabel, captionLabel, userStack, articleImage, contentLabel])
         stack.axis = .vertical
-        stack.spacing = 20
+        stack.spacing = 12
         
         view.addSubview(scrollView)
         scrollView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
