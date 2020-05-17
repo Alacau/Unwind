@@ -25,7 +25,11 @@ class CreateHeader: UIView {
         return imageView
     }()
     
-    let titleTextView = CaptionTextView()
+    let titleTextView: CaptionTextView = {
+        let textView = CaptionTextView()
+        textView.isScrollEnabled = true
+        return textView
+    }()
     
     private let separatorView: UIView = {
         let view = UIView()

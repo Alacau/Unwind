@@ -42,7 +42,6 @@ class ArticlesController: UIViewController {
 
         let logoImageView = UIImageView(image: UIImage(named: "nav-logo"))
         logoImageView.contentMode = .scaleAspectFill
-        logoImageView.setDimensions(width: 64, height: 64)
 
         navigationItem.titleView = logoImageView
         

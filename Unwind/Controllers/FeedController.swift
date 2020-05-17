@@ -32,6 +32,7 @@ class FeedController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchArticles()
+        configureNavigationUI()
     }
     
     override func viewDidLoad() {
@@ -71,7 +72,6 @@ class FeedController: UITableViewController {
     func configureUI() {
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
-        configureNavigationUI()
                 
         tableView.register(ArticleCell.self, forCellReuseIdentifier: articleIdentifier)
         
