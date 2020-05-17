@@ -12,6 +12,27 @@ class ArticlesController: UIViewController {
     
     // MARK: - Properties
     
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        return scrollView
+    }()
+    
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.text = "12 reasons why Ashley’s a clown and why she’s not as basic as she thinks she is"
+        label.font = UIFont(name: "Sarabun-SemiBold", size: 18)
+        return label
+    }()
+    
+    private let captionLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.text = "This is probably going to be a subcaption for the article being viewed! :)"
+        label.font = UIFont(name: "Sarabun", size: 16)
+        return label
+    }()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -32,6 +53,16 @@ class ArticlesController: UIViewController {
         view.backgroundColor = .white
         
         configureNavigationUI()
+        
+        let stack = UIStackView(arrangedSubviews: [titleLabel, captionLabel])
+        stack.axis = .vertical
+        stack.spacing = 20
+        
+        view.addSubview(scrollView)
+        scrollView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+        
+        scrollView.addSubview(stack)
+        stack.anchor(top: scrollView.topAnchor, left: view.leftAnchor, bottom: scrollView.bottomAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingRight: 20)
     }
     
     func configureNavigationUI() {
