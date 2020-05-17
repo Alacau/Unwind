@@ -100,6 +100,7 @@ extension FeedController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Push navigation to view article -> Implement UIScrollView?
+        let controller = ArticlesController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
