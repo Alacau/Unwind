@@ -102,7 +102,7 @@ extension FeedController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = ArticlesController()
+        let controller = ArticlesController(article: articles[indexPath.row])
         navigationController?.pushViewController(controller, animated: true)
     }
 }
