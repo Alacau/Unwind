@@ -8,15 +8,17 @@
 
 import UIKit
 
+private let reuseIdentifier = "ArticleCell"
+
 class SearchController: UITableViewController {
     
     // MARK: - Properties
     
-    private var users = [User]() {
+    private var articles = [Articles]() {
         didSet { tableView.reloadData() }
     }
     
-    private var filteredUsers = [User]() {
+    private var filteredArticles = [Articles]() {
         didSet { tableView.reloadData() }
     }
     
@@ -32,14 +34,14 @@ class SearchController: UITableViewController {
         super.viewDidLoad()
         
         configureUI()
-        fetchUsers()
+        fetchArticles()
     }
     
     // MARK: - API
     
-    func fetchUsers() {
-        UserService.shared.fetchUsers { (users) in
-            self.users = users
+    func fetchArticles() {
+        ArticleService.shared.fetchArticles { (articles) in
+            self.articles = articles
         }
     }
     
@@ -48,6 +50,9 @@ class SearchController: UITableViewController {
     func configureUI() {
         view.backgroundColor = .white
         configureNavigationUI()
+        
+        tableView.register(ArticleCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.tableFooterView = UIView()
     }
     
     func configureNavigationUI() {
@@ -65,9 +70,30 @@ class SearchController: UITableViewController {
     }
 }
 
+extension SearchController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return inSearchMode ? filteredArticles.count : articles.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ArticleCell
+        let article = inSearchMode ? filteredArticles[indexPath.row] : articles[indexPath.row]
+        cell.article = article
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let user = inSearchMode ? filteredArticles[indexPath.row] : articles[indexPath.row]
+//        let controller = ProfileController(user: user)
+//        navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
 extension SearchController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text?.lowercased() else { return }
-        filteredUsers = users.filter({ $0.username.contains(searchText) })
+        print(searchText)
+        
+        filteredArticles = articles.filter({ $0.title.lowercased().contains(searchText) })
     }
 }
