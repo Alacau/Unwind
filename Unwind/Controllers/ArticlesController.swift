@@ -23,7 +23,6 @@ class ArticlesController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-//        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         label.font = UIFont(name: "Sarabun-SemiBold", size: 18)
         return label
     }()
@@ -31,7 +30,6 @@ class ArticlesController: UIViewController {
     private let captionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         label.font = UIFont(name: "Sarabun", size: 16)
         return label
     }()
@@ -46,14 +44,12 @@ class ArticlesController: UIViewController {
     private let fullnameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Sarabun", size: 20)
-        label.text = "First Last"
         return label
     }()
     
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Sarabun", size: 16)
-        label.text = "05/17/2020"
         label.textColor = .gray
         return label
     }()
@@ -71,7 +67,7 @@ class ArticlesController: UIViewController {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 4
         
-        let attributedString = NSMutableAttributedString(string: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?", attributes: [.paragraphStyle: paragraphStyle])
+        let attributedString = NSMutableAttributedString(string: "?", attributes: [.paragraphStyle: paragraphStyle])
         label.attributedText = attributedString
         return label
     }()
@@ -137,17 +133,13 @@ class ArticlesController: UIViewController {
     }
     
     func configure() {
-        var timestamp: String {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MM/dd/YYYY"
-            return formatter.string(from: article.timestamp)
-        }
+        let articlesViewModel = ArticlesViewModel(article: article)
         
-        titleLabel.text = article.title
-        captionLabel.text = article.caption
-        fullnameLabel.text = article.user.fullname
-        dateLabel.text = timestamp
+        titleLabel.text = articlesViewModel.title
+        captionLabel.text = articlesViewModel.caption
+        fullnameLabel.text = articlesViewModel.fullnameLabel
+        dateLabel.text = articlesViewModel.timestamp
         articleImage.sd_setImage(with: article.image)
-        contentLabel.text = article.content
+        contentLabel.text = articlesViewModel.content
     }
 }
