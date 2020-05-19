@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ArticlesController: UIViewController {
     
@@ -22,7 +23,7 @@ class ArticlesController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+//        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         label.font = UIFont(name: "Sarabun-SemiBold", size: 18)
         return label
     }()
@@ -118,6 +119,8 @@ class ArticlesController: UIViewController {
         
         scrollView.addSubview(stack)
         stack.anchor(top: scrollView.topAnchor, left: view.leftAnchor, bottom: scrollView.bottomAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingRight: 20)
+        
+        configure()
     }
     
     func configureNavigationUI() {
@@ -131,5 +134,20 @@ class ArticlesController: UIViewController {
 
         navigationItem.titleView = logoImageView
         
+    }
+    
+    func configure() {
+        var timestamp: String {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MM/dd/YYYY"
+            return formatter.string(from: article.timestamp)
+        }
+        
+        titleLabel.text = article.title
+        captionLabel.text = article.caption
+        fullnameLabel.text = article.user.fullname
+        dateLabel.text = timestamp
+        articleImage.sd_setImage(with: article.image)
+        contentLabel.text = article.content
     }
 }
