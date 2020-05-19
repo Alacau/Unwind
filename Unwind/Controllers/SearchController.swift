@@ -32,6 +32,15 @@ class SearchController: UITableViewController {
         super.viewDidLoad()
         
         configureUI()
+        fetchUsers()
+    }
+    
+    // MARK: - API
+    
+    func fetchUsers() {
+        UserService.shared.fetchUsers { (users) in
+            self.users = users
+        }
     }
     
     // MARK: - Helpers
