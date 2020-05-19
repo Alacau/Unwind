@@ -84,9 +84,9 @@ extension SearchController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let user = inSearchMode ? filteredArticles[indexPath.row] : articles[indexPath.row]
-//        let controller = ProfileController(user: user)
-//        navigationController?.pushViewController(controller, animated: true)
+        let article = inSearchMode ? filteredArticles[indexPath.row] : articles[indexPath.row]
+        let controller = ArticlesController(article: article)
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 
