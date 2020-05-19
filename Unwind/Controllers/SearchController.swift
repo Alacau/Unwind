@@ -8,9 +8,23 @@
 
 import UIKit
 
-class SearchController: UIViewController {
+class SearchController: UITableViewController {
     
     // MARK: - Properties
+    
+    private var users = [User]() {
+        didSet { tableView.reloadData() }
+    }
+    
+    private var filteredUsers = [User]() {
+        didSet { tableView.reloadData() }
+    }
+    
+    private var inSearchMode: Bool {
+        return searchController.isActive && !searchController.searchBar.text!.isEmpty
+    }
+    
+    private let searchController = UISearchController(searchResultsController: nil)
     
     // MARK: - Lifecycles
     
@@ -31,5 +45,20 @@ class SearchController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [.font : UIFont(name: "Sarabun-Bold", size: 36)!]
         navigationItem.title = "Search"
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = "Search for articles"
+        navigationItem.searchController = searchController
+        definesPresentationContext = false
+        
+    }
+}
+
+extension SearchController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text?.lowercased() else { return }
+        filteredUsers = users.filter({ $0.username.contains(searchText) })
     }
 }
