@@ -28,6 +28,12 @@ class SearchController: UITableViewController {
     
     private let searchController = UISearchController(searchResultsController: nil)
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        configureNavigationUI()
+    }
+    
     // MARK: - Lifecycles
     
     override func viewDidLoad() {
@@ -52,8 +58,6 @@ class SearchController: UITableViewController {
         tableView.separatorStyle = .none
         tableView.register(ArticleCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.tableFooterView = UIView()
-
-        configureNavigationUI()
     }
     
     func configureNavigationUI() {
