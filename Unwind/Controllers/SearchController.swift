@@ -48,11 +48,12 @@ class SearchController: UITableViewController {
     // MARK: - Helpers
     
     func configureUI() {
-        view.backgroundColor = .white
-        configureNavigationUI()
-        
+        tableView.backgroundColor = .white
+        tableView.separatorStyle = .none
         tableView.register(ArticleCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.tableFooterView = UIView()
+
+        configureNavigationUI()
     }
     
     func configureNavigationUI() {
