@@ -75,6 +75,9 @@ class SignInController: UIViewController {
         AuthService.shared.signInUser(email: email, password: password) { (result, error) in
             if let error = error {
                 print("DEBUG: \(error.localizedDescription)")
+                let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
                 return
             }
             guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
