@@ -98,9 +98,7 @@ extension SearchController {
 
 extension SearchController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let searchText = searchController.searchBar.text?.lowercased() else { return }
-        print(searchText)
-        
+        guard let searchText = searchController.searchBar.text?.lowercased() else { return }        
         filteredArticles = articles.filter({ $0.title.lowercased().contains(searchText) })
     }
 }
