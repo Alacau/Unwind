@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 
 class SignUpController: UIViewController {
     
@@ -95,19 +96,18 @@ class SignUpController: UIViewController {
         guard let password = passwordTextField.text else { return }
         guard let fullname = fullnameTextField.text else { return }
         guard let username = usernameTextField.text?.lowercased() else { return }
-        
-        let credentials = AuthCredentials(email: email, password: password, fullname: fullname, username: username)
-        
-        AuthService.shared.signUpUser(withCredentials: credentials) { (error, reference) in
+                
+        AuthService.shared.signUpUser(email: email, password: password) { (result, error) in
             if let error = error {
-                print("DEBUG: \(error.localizedDescription)")
+                let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
                 return
             }
-            guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
-            guard let tab = window.rootViewController as? MainTabController else { return }
-            tab.authenticateUser()
+            guard let uid = result?.user.uid else { return }
             
-            self.dismiss(animated: true, completion: nil)
+            let data = ["email": email, "username": username, "fullname": fullname]
+            REF_USERS.child(uid).updateChildValues(data)
         }
     }
     

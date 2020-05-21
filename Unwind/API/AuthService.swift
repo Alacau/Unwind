@@ -9,13 +9,6 @@
 import Firebase
 import FirebaseDatabase
 
-struct AuthCredentials {
-    let email: String
-    let password: String
-    let fullname: String
-    let username: String
-}
-
 struct AuthService {
     static let shared = AuthService()
     
@@ -23,21 +16,7 @@ struct AuthService {
         Auth.auth().signIn(withEmail: email, password: password, completion: completion)
     }
     
-    func signUpUser(withCredentials credentials: AuthCredentials, completion: @escaping((Error?, DatabaseReference) -> Void)) {
-        let email = credentials.email
-        let password = credentials.password
-        let fullname = credentials.fullname
-        let username = credentials.username
-        
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if let error = error {
-                print("DEBUG: \(error.localizedDescription)")
-                return
-            }
-            guard let uid = result?.user.uid else { return }
-            
-            let data = ["email": email, "username": username, "fullname": fullname]
-            REF_USERS.child(uid).updateChildValues(data, withCompletionBlock: completion)
-        }
+    func signUpUser(email: String, password: String, completion: (AuthDataResultCallback?)) {
+        Auth.auth().createUser(withEmail: email, password: password, completion: completion)
     }
 }
