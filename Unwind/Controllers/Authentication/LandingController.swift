@@ -91,7 +91,6 @@ class LandingController: UIViewController {
     }
     
     func configureNavigationUI() {
-        navigationController?.navigationBar.tintColor = .unwindRed
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [.font : UIFont(name: "Sarabun-Bold", size: 36)!]
     }

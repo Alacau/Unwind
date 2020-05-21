@@ -122,7 +122,6 @@ class CreateController: UITableViewController {
     }
     
     func configureNavigationUI() {
-        navigationController?.navigationBar.tintColor = .unwindRed
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage() // Removes underline view of navigation
 

@@ -121,7 +121,6 @@ class ArticlesController: UIViewController {
     
     func configureNavigationUI() {
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationBar.tintColor = .unwindRed
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage() // Removes underline view of navigation
 

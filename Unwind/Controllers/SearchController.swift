@@ -69,7 +69,6 @@ class SearchController: UITableViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = true
-        searchController.searchBar.tintColor = .unwindRed
         searchController.searchBar.autocapitalizationType = .none
         searchController.searchBar.placeholder = "Search for articles"
         navigationItem.searchController = searchController

@@ -45,7 +45,6 @@ class MainTabController: UITabBarController {
         viewControllers = [navItem1, navItem2, navItem3, navItem4, navItem5]
         
         tabBar.barTintColor = .white
-        tabBar.tintColor = .unwindRed
         tabBar.unselectedItemTintColor = .black
     }
     
