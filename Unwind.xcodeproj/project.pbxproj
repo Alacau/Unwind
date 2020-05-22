@@ -23,6 +23,7 @@
 		443587F92463C21600A733C2 /* Sarabun-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 443587E82463C21600A733C2 /* Sarabun-Bold.ttf */; };
 		443587FA2463C21600A733C2 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 443587E92463C21600A733C2 /* OFL.txt */; };
 		443587FB2463C21600A733C2 /* Sarabun-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 443587EA2463C21600A733C2 /* Sarabun-SemiBold.ttf */; };
+		4448E0C9247869C70092667A /* UserArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4448E0C8247869C70092667A /* UserArticleCell.swift */; };
 		444C54292469B5FA00325DBD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 444C54282469B5FA00325DBD /* GoogleService-Info.plist */; };
 		4495EC2A2464872400F455FC /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495EC292464872400F455FC /* SignUpController.swift */; };
 		44B5C2D3246DB6E100F78A14 /* CreateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5C2D2246DB6E100F78A14 /* CreateController.swift */; };
@@ -91,6 +92,7 @@
 		443587E82463C21600A733C2 /* Sarabun-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sarabun-Bold.ttf"; sourceTree = "<group>"; };
 		443587E92463C21600A733C2 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		443587EA2463C21600A733C2 /* Sarabun-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sarabun-SemiBold.ttf"; sourceTree = "<group>"; };
+		4448E0C8247869C70092667A /* UserArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserArticleCell.swift; sourceTree = "<group>"; };
 		444C54282469B5FA00325DBD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4495EC292464872400F455FC /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		44B5C2D2246DB6E100F78A14 /* CreateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateController.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				44F56F99246D961800188BB5 /* ArticleCell.swift */,
 				440B89DE246E60610068DB45 /* CreateHeader.swift */,
 				440B89E0246E64250068DB45 /* CaptionTextView.swift */,
+				4448E0C8247869C70092667A /* UserArticleCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				44299E15245FF6440084BCC1 /* AppDelegate.swift in Sources */,
 				44299E17245FF6440084BCC1 /* SceneDelegate.swift in Sources */,
 				44094F1724719E8D0037DE48 /* ArticlesController.swift in Sources */,
+				4448E0C9247869C70092667A /* UserArticleCell.swift in Sources */,
 				44E3122C2469B8A800C4513D /* FeedController.swift in Sources */,
 				44CCF80124735D7E00CE70C5 /* ArticlesViewModel.swift in Sources */,
 				44DDA5BE2463B06B008A42CF /* LandingController.swift in Sources */,
