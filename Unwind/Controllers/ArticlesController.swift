@@ -83,6 +83,17 @@ class ArticlesController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .never
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.largeTitleDisplayMode = .always
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -128,7 +139,6 @@ class ArticlesController: UIViewController {
         logoImageView.contentMode = .scaleAspectFill
 
         navigationItem.titleView = logoImageView
-        
     }
     
     func configure() {
