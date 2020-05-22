@@ -13,6 +13,10 @@ class MainTabController: UITabBarController {
    
     // MARK: - Properties
     
+    var user: User? {
+        didSet { configureTabs() }
+    }
+    
     // MARK: - Lifecycles
     
     override func viewDidLoad() {
@@ -21,6 +25,15 @@ class MainTabController: UITabBarController {
 //        logUserOut() // Uncomment this to log out
         view.backgroundColor = .white
         authenticateUser()
+    }
+    
+    // MARK: - API
+    
+    func fetchCurrentUser() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        UserService.shared.fetchCurrentUser(uid: uid) { (user) in
+            self.user = user
+        }
     }
     
     // MARK: - Helpers
@@ -33,8 +46,8 @@ class MainTabController: UITabBarController {
         let search = SearchController()
         let navItem2 = createTabControllers(image: UIImage(named: "search"), title: "Search", viewController: search)
         
-        let user = UserController()
-        let navItem3 = createTabControllers(image: UIImage(named: "user"), title: "Profile", viewController: user)
+        let profile = UserController(user: self.user!)
+        let navItem3 = createTabControllers(image: UIImage(named: "user"), title: "Profile", viewController: profile)
         
         let favorites = FavoritesController()
         let navItem4 = createTabControllers(image: UIImage(named: "favorites"), title: "Favorites", viewController: favorites)
@@ -64,7 +77,7 @@ class MainTabController: UITabBarController {
                 self.present(nav, animated: true, completion: nil)
             }
         } else {
-            configureTabs()
+            fetchCurrentUser()
         }
     }
     
