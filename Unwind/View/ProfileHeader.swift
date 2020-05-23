@@ -39,6 +39,13 @@ class ProfileHeader: UIView {
         return view
     }()
     
+    private let articleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Articles"
+        label.font = UIFont(name: "Sarabun-Bold", size: 24)
+        return label
+    }()
+    
     // MARK: - Lifecycle
     
     override init(frame: CGRect) {
@@ -57,6 +64,9 @@ class ProfileHeader: UIView {
         
         addSubview(underlineView)
         underlineView.anchor(top: stack.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 20, height: 0.2)
+        
+        addSubview(articleLabel)
+        articleLabel.anchor(top: underlineView.bottomAnchor, left: leftAnchor, paddingTop: 12, paddingLeft: 20)
     }
     
     required init?(coder: NSCoder) {
