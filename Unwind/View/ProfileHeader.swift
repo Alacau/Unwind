@@ -33,6 +33,12 @@ class ProfileHeader: UIView {
         return label
     }()
     
+    private lazy var underlineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        return view
+    }()
+    
     // MARK: - Lifecycle
     
     override init(frame: CGRect) {
@@ -48,6 +54,9 @@ class ProfileHeader: UIView {
         
         addSubview(stack)
         stack.anchor(top: safeAreaLayoutGuide.topAnchor, left: leftAnchor, paddingLeft: 20)
+        
+        addSubview(underlineView)
+        underlineView.anchor(top: stack.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 20, height: 0.2)
     }
     
     required init?(coder: NSCoder) {
