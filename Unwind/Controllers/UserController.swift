@@ -65,6 +65,6 @@ extension UserController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 200
+        return 120
     }
 }
