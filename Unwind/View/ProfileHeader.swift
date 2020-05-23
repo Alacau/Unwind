@@ -51,6 +51,8 @@ class ProfileHeader: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        backgroundColor = .white
+        
         let nameStack = UIStackView(arrangedSubviews: [fullnameLabel, usernameLabel])
         nameStack.axis = .vertical
         
@@ -60,7 +62,7 @@ class ProfileHeader: UIView {
         stack.alignment = .center
         
         addSubview(stack)
-        stack.anchor(top: safeAreaLayoutGuide.topAnchor, left: leftAnchor, paddingLeft: 20)
+        stack.anchor(top: safeAreaLayoutGuide.topAnchor, left: leftAnchor, paddingTop: 20, paddingLeft: 20)
         
         addSubview(underlineView)
         underlineView.anchor(top: stack.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 20, height: 0.2)
