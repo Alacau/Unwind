@@ -16,6 +16,9 @@ class UserController: UITableViewController {
     // MARK: - Properties
     
     private var user: User
+    private var articles = [Articles]() {
+        didSet { tableView.reloadData() }
+    }
         
     // MARK: - Lifecycles
     
@@ -32,6 +35,15 @@ class UserController: UITableViewController {
         super.viewDidLoad()
         
         configureUI()
+        fetchUserArticles()
+    }
+    
+    // MARK: - API
+    
+    func fetchUserArticles() {
+        ArticleService.shared.fetchArticles { (articles) in
+            self.articles = articles
+        }
     }
     
     // MARK: - Helpers
@@ -54,12 +66,11 @@ class UserController: UITableViewController {
 
 extension UserController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return articles.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! UserArticleCell
-        cell.textLabel?.text = "Test cells"
         return cell
     }
     
