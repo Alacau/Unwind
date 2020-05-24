@@ -65,7 +65,7 @@ class ProfileHeader: UIView {
         stack.anchor(top: safeAreaLayoutGuide.topAnchor, left: leftAnchor, paddingTop: 20, paddingLeft: 20)
         
         addSubview(underlineView)
-        underlineView.anchor(top: stack.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 20, height: 0.2)
+        underlineView.anchor(top: stack.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 20, height: 0.5)
         
         addSubview(articleLabel)
         articleLabel.anchor(top: underlineView.bottomAnchor, left: leftAnchor, paddingTop: 12, paddingLeft: 20)
