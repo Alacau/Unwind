@@ -60,4 +60,28 @@ struct ArticleService {
             }
         }
     }
+    
+    func fetchArticles(withArticleID articleID: String, completion: @escaping(Articles) -> Void) {
+        REF_ARTICLES.child(articleID).observeSingleEvent(of: .value) { (snapshot) in
+            guard let dictionary = snapshot.value as? [String: Any] else { return }
+            guard let uid = dictionary["uid"] as? String else { return }
+            
+            UserService.shared.fetchCurrentUser(uid: uid) { (user) in
+                let article = Articles(user: user, uid: uid, dictionary: dictionary)
+                completion(article)
+            }
+        }
+    }
+    
+    func fetchUserArticles(forUser user: User, completion: @escaping([Articles]) -> Void) {
+        var articles = [Articles]()
+        REF_USER_ARTICLES.child(user.uid).observe(.childAdded) { (snapshot) in
+            let articleID = snapshot.key
+            
+            self.fetchArticles(withArticleID: articleID) { (article) in
+                articles.append(article)
+                completion(articles)
+            }
+        }
+    }
 }

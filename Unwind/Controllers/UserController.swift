@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-private let reuseIdentifier = "UserArticleCell"
+private let reuseIdentifier = "ArticleCell"
 
 class UserController: UITableViewController {
     
@@ -41,7 +41,7 @@ class UserController: UITableViewController {
     // MARK: - API
     
     func fetchUserArticles() {
-        ArticleService.shared.fetchArticles { (articles) in
+        ArticleService.shared.fetchUserArticles(forUser: user) { (articles) in
             self.articles = articles
         }
     }
@@ -52,7 +52,7 @@ class UserController: UITableViewController {
         view.backgroundColor = .white
         configureNavigationUI()
         
-        tableView.register(UserArticleCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(ArticleCell.self, forCellReuseIdentifier: reuseIdentifier)
     }
     
     func configureNavigationUI() {
@@ -70,7 +70,8 @@ extension UserController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! UserArticleCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ArticleCell
+        cell.article = articles[indexPath.row]
         return cell
     }
     

@@ -108,6 +108,12 @@ class SignUpController: UIViewController {
             
             let data = ["email": email, "username": username, "fullname": fullname]
             REF_USERS.child(uid).updateChildValues(data)
+            
+            guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
+            guard let tab = window.rootViewController as? MainTabController else { return }
+            tab.authenticateUser()
+
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
