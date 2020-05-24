@@ -49,7 +49,9 @@ class UserController: UITableViewController {
     // MARK: - Helpers
     
     func configureUI() {
-        view.backgroundColor = .white
+        tableView.backgroundColor = .white
+        tableView.separatorStyle = .none
+        
         configureNavigationUI()
         
         tableView.register(ArticleCell.self, forCellReuseIdentifier: reuseIdentifier)
@@ -60,6 +62,7 @@ class UserController: UITableViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = [.font : UIFont(name: "Sarabun-Bold", size: 36)!]
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage() // Removes underline view of navigation
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.title = "Profile" //  Will set this to the user's name?
     }
 }
@@ -73,6 +76,11 @@ extension UserController {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ArticleCell
         cell.article = articles[indexPath.row]
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = ArticlesController(article: articles[indexPath.row])
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
