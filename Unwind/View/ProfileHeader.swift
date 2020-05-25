@@ -22,14 +22,13 @@ class ProfileHeader: UIView {
     var fullnameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Sarabun", size: 18)
-        label.text = "First Last"
         return label
     }()
     
     var usernameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Sarabun", size: 16)
-        label.text = "@username"
+        label.textColor = .gray
         return label
     }()
     
