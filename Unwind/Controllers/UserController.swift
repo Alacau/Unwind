@@ -65,6 +65,14 @@ class UserController: UITableViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.title = "Profile" //  Will set this to the user's name?
     }
+    
+    func configureProfileHeader() -> UIView {
+        let viewModel = ProfileHeaderViewModel(user: user)
+        let profileHeader = ProfileHeader()
+        profileHeader.fullnameLabel.text = viewModel.fullnameText
+        profileHeader.usernameLabel.text = viewModel.usernameText
+        return profileHeader
+    }
 }
 
 extension UserController {
@@ -84,10 +92,7 @@ extension UserController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = ProfileHeader()
-        header.fullnameLabel.text = user.fullname
-        header.usernameLabel.text = user.username
-        return header
+        configureProfileHeader()
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

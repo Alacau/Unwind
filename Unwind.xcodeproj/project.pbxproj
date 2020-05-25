@@ -32,6 +32,7 @@
 		44DDA5BB2463B051008A42CF /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA5BA2463B051008A42CF /* SignInController.swift */; };
 		44DDA5BE2463B06B008A42CF /* LandingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA5BD2463B06B008A42CF /* LandingController.swift */; };
 		44DDA5C02463B17D008A42CF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA5BF2463B17D008A42CF /* Extensions.swift */; };
+		44DDBDED247C267300A09E38 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDBDEC247C267300A09E38 /* ProfileHeaderViewModel.swift */; };
 		44E3122A2469B84400C4513D /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E312292469B84400C4513D /* MainTabController.swift */; };
 		44E3122C2469B8A800C4513D /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E3122B2469B8A800C4513D /* FeedController.swift */; };
 		44E3122E2469B8B400C4513D /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E3122D2469B8B400C4513D /* SearchController.swift */; };
@@ -101,6 +102,7 @@
 		44DDA5BA2463B051008A42CF /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		44DDA5BD2463B06B008A42CF /* LandingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingController.swift; sourceTree = "<group>"; };
 		44DDA5BF2463B17D008A42CF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		44DDBDEC247C267300A09E38 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
 		44E312292469B84400C4513D /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		44E3122B2469B8A800C4513D /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
 		44E3122D2469B8B400C4513D /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				44CCF80024735D7E00CE70C5 /* ArticlesViewModel.swift */,
+				44DDBDEC247C267300A09E38 /* ProfileHeaderViewModel.swift */,
 			);
 			path = VIewModel;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				44E312342469B8E100C4513D /* NotificationsController.swift in Sources */,
 				4495EC2A2464872400F455FC /* SignUpController.swift in Sources */,
 				44DDA5BB2463B051008A42CF /* SignInController.swift in Sources */,
+				44DDBDED247C267300A09E38 /* ProfileHeaderViewModel.swift in Sources */,
 				44B5C2D3246DB6E100F78A14 /* CreateController.swift in Sources */,
 				44299E15245FF6440084BCC1 /* AppDelegate.swift in Sources */,
 				44299E17245FF6440084BCC1 /* SceneDelegate.swift in Sources */,
