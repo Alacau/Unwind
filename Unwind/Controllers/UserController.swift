@@ -84,7 +84,10 @@ extension UserController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return ProfileHeader()
+        let header = ProfileHeader()
+        header.fullnameLabel.text = user.fullname
+        header.usernameLabel.text = user.username
+        return header
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

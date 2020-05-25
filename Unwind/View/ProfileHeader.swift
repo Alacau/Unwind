@@ -12,21 +12,21 @@ class ProfileHeader: UIView {
     
     // MARK: - Properties
     
-    let userProfileImage: UIImageView = {
+    var userProfileImage: UIImageView = {
         let imageView = Utilities().simpleImageView(image: UIImage(named: "user"), cornerRadius: 56 / 2, borderWidth: 0.3)
         imageView.contentMode = .center
         imageView.setDimensions(width: 56, height: 56)
         return imageView
     }()
     
-    let fullnameLabel: UILabel = {
+    var fullnameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Sarabun", size: 18)
         label.text = "First Last"
         return label
     }()
     
-    let usernameLabel: UILabel = {
+    var usernameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Sarabun", size: 16)
         label.text = "@username"
