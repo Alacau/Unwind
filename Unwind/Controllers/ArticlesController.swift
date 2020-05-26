@@ -106,6 +106,10 @@ class ArticlesController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc func handleFavorite() {
+        
+    }
+    
     // MARK: - Helpers
     
     func configureUI() {
@@ -139,6 +143,8 @@ class ArticlesController: UIViewController {
         logoImageView.contentMode = .scaleAspectFill
 
         navigationItem.titleView = logoImageView
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favorites"), style: .plain, target: self, action: #selector(handleFavorite))
     }
     
     func configure() {
