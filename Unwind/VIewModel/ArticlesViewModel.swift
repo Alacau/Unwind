@@ -27,8 +27,11 @@ class ArticlesViewModel {
         return article.user.fullname
     }
     
-    var content: String {
-        return article.content
+    var content: NSMutableAttributedString {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        let attributedString = NSMutableAttributedString(string: article.content, attributes: [.paragraphStyle: paragraphStyle])
+        return attributedString
     }
    
     var timestamp: String {

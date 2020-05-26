@@ -64,11 +64,6 @@ class ArticlesController: UIViewController {
         let label = UILabel()
         label.font = UIFont(name: "Sarabun", size: 18)
         label.numberOfLines = 0
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 4
-        
-        let attributedString = NSMutableAttributedString(string: "?", attributes: [.paragraphStyle: paragraphStyle])
-        label.attributedText = attributedString
         return label
     }()
     
@@ -155,6 +150,6 @@ class ArticlesController: UIViewController {
         fullnameLabel.text = articlesViewModel.fullnameLabel
         dateLabel.text = articlesViewModel.timestamp
         articleImage.sd_setImage(with: article.image)
-        contentLabel.text = articlesViewModel.content
+        contentLabel.attributedText = articlesViewModel.content
     }
 }
