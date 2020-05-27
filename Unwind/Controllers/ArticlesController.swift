@@ -103,6 +103,14 @@ class ArticlesController: UIViewController {
     
     @objc func handleFavorite() {
         // API Call to add user-favorites
+        // if liked = false and pressed change then like = true
+        if article.isFavorited {
+            article.isFavorited = false
+            navigationItem.rightBarButtonItem?.image = UIImage(named: "favorites")
+        } else {
+            article.isFavorited = true
+            navigationItem.rightBarButtonItem?.image = UIImage(named: "favorites-filled")
+        }
     }
     
     // MARK: - Helpers

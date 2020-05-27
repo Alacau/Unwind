@@ -29,7 +29,7 @@ class CreateController: UITableViewController {
     
     private let captionTextView: CaptionTextView = {
         let textView = CaptionTextView()
-        textView.placeholderLabel.text = "Caption"
+        textView.placeholderLabel.text = " Caption"
         textView.placeholderLabel.font = UIFont(name: "Sarabun", size: 16)
         textView.font = UIFont(name: "Sarabun", size: 16)
         textView.isScrollEnabled = true
@@ -38,7 +38,7 @@ class CreateController: UITableViewController {
     
     private let contentTextView: CaptionTextView = {
         let textView = CaptionTextView()
-        textView.placeholderLabel.text = "Content"
+        textView.placeholderLabel.text = " Content"
         textView.placeholderLabel.font = UIFont(name: "Sarabun", size: 16)
         textView.font = UIFont(name: "Sarabun", size: 16)
         textView.isScrollEnabled = true

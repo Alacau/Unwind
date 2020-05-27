@@ -16,7 +16,7 @@ struct Articles {
     let content: String
     var image: URL?
     var timestamp: Date!
-    // favorites
+    var isFavorited: Bool = false
     
     init(user: User, uid: String, dictionary: [String: Any]) {
         self.user = user
