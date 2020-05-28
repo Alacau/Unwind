@@ -101,6 +101,12 @@ class ArticlesController: UIViewController {
         configureUI()
     }
     
+    // MARK: - API
+    
+    func fetchArticleFavorites() {
+        
+    }
+    
     // MARK: - Selectors
     
     @objc func handleCancel() {

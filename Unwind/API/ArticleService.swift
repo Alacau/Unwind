@@ -101,4 +101,17 @@ struct ArticleService {
             }
         }
     }
+    
+    func fetchFavorites(forUser user: User, completion: @escaping([Articles]) -> Void) {
+        var articles = [Articles]()
+        REF_USER_FAVORITES.child(user.uid).observe(.childAdded) { (snapshot) in
+            let articleID = snapshot.key
+            self.fetchArticles(withArticleID: articleID) { (likedArticle) in
+                var article = likedArticle
+                article.isFavorited = true
+                articles.append(article)
+                completion(articles)
+            }
+        }
+    }
 }
