@@ -20,6 +20,10 @@ class FavoritesController: UIViewController {
         configureUI()
     }
     
+    // MARK: - API
+    
+    // Fetch favorites for user here
+    
     // MARK: - Helpers
     
     func configureUI() {

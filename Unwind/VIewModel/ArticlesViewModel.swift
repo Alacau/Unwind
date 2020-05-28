@@ -40,6 +40,11 @@ class ArticlesViewModel {
         return formatter.string(from: article.timestamp)
     }
     
+    var favoriteButtonImage: UIImage? {
+        let imageName = article.isFavorited ? "favorites-filled" : "favorites"
+        return UIImage(named: imageName)
+    }
+        
     // MARK: - Lifecycle
     
     init(article: Articles) {
