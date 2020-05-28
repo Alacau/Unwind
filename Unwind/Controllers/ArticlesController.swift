@@ -82,6 +82,12 @@ class ArticlesController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .never
+        
+        if article.isFavorited {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favorites-filled"), style: .plain, target: self, action: #selector(handleFavorite))
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favorites"), style: .plain, target: self, action: #selector(handleFavorite))
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -107,9 +113,11 @@ class ArticlesController: UIViewController {
         if article.isFavorited {
             article.isFavorited = false
             navigationItem.rightBarButtonItem?.image = UIImage(named: "favorites")
+            print("DEBUG: Article is unfavorited")
         } else {
             article.isFavorited = true
             navigationItem.rightBarButtonItem?.image = UIImage(named: "favorites-filled")
+            print("DEBUG: Article is favorited")
         }
     }
     
@@ -146,8 +154,6 @@ class ArticlesController: UIViewController {
         logoImageView.contentMode = .scaleAspectFill
 
         navigationItem.titleView = logoImageView
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favorites"), style: .plain, target: self, action: #selector(handleFavorite))
     }
     
     func configure() {

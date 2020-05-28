@@ -84,4 +84,21 @@ struct ArticleService {
             }
         }
     }
+    
+    func favoriteArticle(article: Articles, completion: @escaping(Error?, DatabaseReference) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let favorites = article.isFavorited ? article.favorites - 1 : article.favorites + 1
+        REF_ARTICLES.child(article.uid).child("favorites").setValue(favorites)
+        
+        if article.isFavorited {
+            REF_USER_FAVORITES.child(uid).child(article.uid).removeValue { (error, reference) in
+                REF_ARTICLE_FAVORITES.child(article.uid).removeValue(completionBlock: completion)
+            }
+        } else {
+            REF_USER_FAVORITES.child(uid).updateChildValues([article.uid: 1]) { (error, reference) in
+                REF_ARTICLE_FAVORITES.child(article.uid).updateChildValues([uid: 1], withCompletionBlock: completion)
+            }
+        }
+    }
 }
