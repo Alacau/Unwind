@@ -100,13 +100,7 @@ class ArticlesController: UIViewController {
         
         configureUI()
     }
-    
-    // MARK: - API
-    
-    func fetchArticleFavorites() {
         
-    }
-    
     // MARK: - Selectors
     
     @objc func handleCancel() {
@@ -115,7 +109,7 @@ class ArticlesController: UIViewController {
     
     @objc func handleFavorite() {
         // API Call to add user-favorites
-        // if liked = false and pressed change then like = true
+        // Will move down to configure() to be handled by Article view model
         if article.isFavorited {
             article.isFavorited = false
             navigationItem.rightBarButtonItem?.image = UIImage(named: "favorites")

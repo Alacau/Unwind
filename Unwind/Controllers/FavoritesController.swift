@@ -12,7 +12,18 @@ class FavoritesController: UIViewController {
     
     // MARK: - Properties
     
+    private let user: User
+    
     // MARK: - Lifecycles
+    
+    init(user: User) {
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +33,9 @@ class FavoritesController: UIViewController {
     
     // MARK: - API
     
-    // Fetch favorites for user here
+    func fetchFavorites() {
+        ArticleService.shared.fetchFavorites(forUser: <#T##User#>, completion: <#T##([Articles]) -> Void#>)
+    }
     
     // MARK: - Helpers
     
