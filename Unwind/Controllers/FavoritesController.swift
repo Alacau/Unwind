@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 private let reuseIdentifier = "FavoritesCell"
 
@@ -14,9 +16,9 @@ class FavoritesController: UITableViewController {
     
     // MARK: - Properties
     
-    private let user: User
+    var user: User
     
-    private var articles = [Articles]() {
+    var articles = [Articles]() {
         didSet { tableView.reloadData() }
     }
     
@@ -35,11 +37,21 @@ class FavoritesController: UITableViewController {
         super.viewDidLoad()
         
         configureUI()
+        fetchCurrentUser()
+        fetchFavorites()
     }
     
     // MARK: - API
     
+    func fetchCurrentUser() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        UserService.shared.fetchCurrentUser(uid: uid) { (user) in
+            self.user = user
+        }
+    }
+    
     func fetchFavorites() {
+        print("Current user is \(user)")
         ArticleService.shared.fetchFavorites(forUser: user) { (articles) in
             self.articles = articles
         }
@@ -64,6 +76,7 @@ class FavoritesController: UITableViewController {
 
 extension FavoritesController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(articles.count)
         return articles.count
     }
     

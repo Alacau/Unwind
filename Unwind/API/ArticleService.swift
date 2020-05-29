@@ -89,7 +89,10 @@ struct ArticleService {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         let favorites = article.isFavorited ? article.favorites - 1 : article.favorites + 1
-        REF_ARTICLES.child(article.uid).child("favorites").setValue(favorites)
+        REF_USER_ARTICLES.child(uid).observe(.childAdded) { (snapshot) in
+            let articleID = snapshot.key
+            REF_ARTICLES.child(articleID).updateChildValues(["favorites": favorites])
+        }
         
         if article.isFavorited {
             REF_USER_FAVORITES.child(uid).child(article.uid).removeValue { (error, reference) in
@@ -103,13 +106,16 @@ struct ArticleService {
     }
     
     func fetchFavorites(forUser user: User, completion: @escaping([Articles]) -> Void) {
+        print("Is this function even running")
         var articles = [Articles]()
         REF_USER_FAVORITES.child(user.uid).observe(.childAdded) { (snapshot) in
             let articleID = snapshot.key
+            print("DEBUG: Article ID is: \(articleID)")
             self.fetchArticles(withArticleID: articleID) { (likedArticle) in
                 var article = likedArticle
                 article.isFavorited = true
                 articles.append(article)
+                print("Article count is: \(articles.count)")
                 completion(articles)
             }
         }
