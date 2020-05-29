@@ -8,11 +8,15 @@
 
 import UIKit
 
-class FavoritesController: UIViewController {
+class FavoritesController: UITableViewController {
     
     // MARK: - Properties
     
     private let user: User
+    
+    private var articles = [Articles]() {
+        didSet { tableView.reloadData() }
+    }
     
     // MARK: - Lifecycles
     
@@ -34,7 +38,9 @@ class FavoritesController: UIViewController {
     // MARK: - API
     
     func fetchFavorites() {
-        ArticleService.shared.fetchFavorites(forUser: <#T##User#>, completion: <#T##([Articles]) -> Void#>)
+        ArticleService.shared.fetchFavorites(forUser: user) { (articles) in
+            self.articles = articles
+        }
     }
     
     // MARK: - Helpers
