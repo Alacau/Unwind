@@ -99,7 +99,6 @@ class ArticlesController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
-        print(article)
     }
         
     // MARK: - Selectors
@@ -115,10 +114,10 @@ class ArticlesController: UIViewController {
                     print("DEBUG: \(error.localizedDescription)")
                     return
                 }
-                self.article.isFavorited = true
+                self.configure()
                 self.navigationItem.rightBarButtonItem?.image = UIImage(named: "favorites-filled")
             }
-        } // else if article.isFavorited { HANDLE UNFAVORITE }
+        }
     }
     
     // MARK: - Helpers
@@ -141,8 +140,6 @@ class ArticlesController: UIViewController {
         
         scrollView.addSubview(stack)
         stack.anchor(top: scrollView.topAnchor, left: view.leftAnchor, bottom: scrollView.bottomAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingRight: 20)
-        
-        configure()
     }
     
     func configureNavigationUI() {
