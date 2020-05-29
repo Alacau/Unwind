@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let reuseIdentifier = "FavoritesCell"
+
 class FavoritesController: UITableViewController {
     
     // MARK: - Properties
@@ -46,7 +48,8 @@ class FavoritesController: UITableViewController {
     // MARK: - Helpers
     
     func configureUI() {
-        view.backgroundColor = .white
+        tableView.backgroundColor = .white
+        tableView.register(FavoritesCell.self, forCellReuseIdentifier: reuseIdentifier)
         configureNavigationUI()
     }
     
@@ -56,5 +59,16 @@ class FavoritesController: UITableViewController {
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage() // Removes underline view of navigation
         navigationItem.title = "Favorites"
+    }
+}
+
+extension FavoritesController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return articles.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! FavoritesCell
+        return cell
     }
 }
