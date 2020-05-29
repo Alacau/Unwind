@@ -92,30 +92,26 @@ struct ArticleService {
         REF_USER_ARTICLES.child(uid).observe(.childAdded) { (snapshot) in
             let articleID = snapshot.key
             REF_ARTICLES.child(articleID).updateChildValues(["favorites": favorites])
-        }
-        
-        if article.isFavorited {
-            REF_USER_FAVORITES.child(uid).child(article.uid).removeValue { (error, reference) in
-                REF_ARTICLE_FAVORITES.child(article.uid).removeValue(completionBlock: completion)
-            }
-        } else {
-            REF_USER_FAVORITES.child(uid).updateChildValues([article.uid: 1]) { (error, reference) in
-                REF_ARTICLE_FAVORITES.child(article.uid).updateChildValues([uid: 1], withCompletionBlock: completion)
+            if article.isFavorited {
+                REF_USER_FAVORITES.child(uid).child(articleID).removeValue { (error, reference) in
+                    REF_ARTICLE_FAVORITES.child(articleID).removeValue(completionBlock: completion)
+                }
+            } else {
+                REF_USER_FAVORITES.child(uid).updateChildValues([articleID: 1]) { (error, reference) in
+                    REF_ARTICLE_FAVORITES.child(articleID).updateChildValues([uid: 1], withCompletionBlock: completion)
+                }
             }
         }
     }
     
     func fetchFavorites(forUser user: User, completion: @escaping([Articles]) -> Void) {
-        print("Is this function even running")
         var articles = [Articles]()
         REF_USER_FAVORITES.child(user.uid).observe(.childAdded) { (snapshot) in
             let articleID = snapshot.key
-            print("DEBUG: Article ID is: \(articleID)")
             self.fetchArticles(withArticleID: articleID) { (likedArticle) in
                 var article = likedArticle
                 article.isFavorited = true
                 articles.append(article)
-                print("Article count is: \(articles.count)")
                 completion(articles)
             }
         }

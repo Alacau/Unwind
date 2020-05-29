@@ -51,7 +51,6 @@ class FavoritesController: UITableViewController {
     }
     
     func fetchFavorites() {
-        print("Current user is \(user)")
         ArticleService.shared.fetchFavorites(forUser: user) { (articles) in
             self.articles = articles
         }
@@ -76,7 +75,6 @@ class FavoritesController: UITableViewController {
 
 extension FavoritesController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(articles.count)
         return articles.count
     }
     
