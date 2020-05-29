@@ -108,17 +108,16 @@ class ArticlesController: UIViewController {
     }
     
     @objc func handleFavorite() {
-        // API Call to add user-favorites
-        // Will move down to configure() to be handled by Article view model
-        if article.isFavorited {
-            article.isFavorited = false
-            navigationItem.rightBarButtonItem?.image = UIImage(named: "favorites")
-            print("DEBUG: Article is unfavorited")
-        } else {
-            article.isFavorited = true
-            navigationItem.rightBarButtonItem?.image = UIImage(named: "favorites-filled")
-            print("DEBUG: Article is favorited")
-        }
+        if !article.isFavorited {
+            ArticleService.shared.favoriteArticle(article: article) { (error, reference) in
+                if let error = error {
+                    print("DEBUG: \(error.localizedDescription)")
+                    return
+                }
+                self.article.isFavorited = true
+                self.navigationItem.rightBarButtonItem?.image = UIImage(named: "favorites-filled")
+            }
+        } // else if article.isFavorited { HANDLE UNFAVORITE }
     }
     
     // MARK: - Helpers
