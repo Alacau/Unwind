@@ -92,8 +92,17 @@ class ArticlesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkIfUserFavoritedArticle()
         configureUI()
-        configure()
+    }
+    
+    // MARK: - API
+    
+    func checkIfUserFavoritedArticle() {
+        ArticleService.shared.checkIfUserFavoritedArticle(forArticle: article) { (isFavorited) in
+            self.article.isFavorited = isFavorited
+            self.configure()
+        }
     }
         
     // MARK: - Selectors
@@ -150,7 +159,6 @@ class ArticlesController: UIViewController {
     
     func configure() {
         let articlesViewModel = ArticlesViewModel(article: article)
-        print("DEBUG: Article is favorited \(article.isFavorited)")
         
         titleLabel.text = articlesViewModel.title
         captionLabel.text = articlesViewModel.caption

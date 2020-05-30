@@ -116,4 +116,15 @@ struct ArticleService {
             }
         }
     }
+    
+    func checkIfUserFavoritedArticle(forArticle article: Articles, completion: @escaping(Bool) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        REF_USER_FAVORITES.child(uid).observe(.childAdded) { (snapshot) in
+            let articleID = snapshot.key
+            REF_USER_FAVORITES.child(uid).child(articleID).observeSingleEvent(of: .value) { (snapshot) in
+                completion(snapshot.exists())
+            }
+        }
+    }
 }
