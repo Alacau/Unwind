@@ -82,12 +82,6 @@ class ArticlesController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .never
-        
-        if article.isFavorited {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favorites-filled"), style: .plain, target: self, action: #selector(handleFavorite))
-        } else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favorites"), style: .plain, target: self, action: #selector(handleFavorite))
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -109,15 +103,15 @@ class ArticlesController: UIViewController {
     }
     
     @objc func handleFavorite() {
-        if !article.isFavorited {
-            ArticleService.shared.favoriteArticle(article: article) { (error, reference) in
-                if let error = error {
-                    print("DEBUG: \(error.localizedDescription)")
-                    return
-                }
-                self.configure()
-                self.navigationItem.rightBarButtonItem?.image = UIImage(named: "favorites-filled")
+        ArticleService.shared.favoriteArticle(article: article) { (error, reference) in
+            if let error = error {
+                print("DEBUG: \(error.localizedDescription)")
+                return
             }
+            self.article.isFavorited.toggle()
+            let favorites = self.article.isFavorited ? self.article.favorites - 1 : self.article.favorites + 1
+            self.article.favorites = favorites
+            self.configure()
         }
     }
     
@@ -156,6 +150,7 @@ class ArticlesController: UIViewController {
     
     func configure() {
         let articlesViewModel = ArticlesViewModel(article: article)
+        print("DEBUG: Article is favorited \(article.isFavorited)")
         
         titleLabel.text = articlesViewModel.title
         captionLabel.text = articlesViewModel.caption
@@ -163,5 +158,6 @@ class ArticlesController: UIViewController {
         dateLabel.text = articlesViewModel.timestamp
         articleImage.sd_setImage(with: article.image)
         contentLabel.attributedText = articlesViewModel.content
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: articlesViewModel.favoriteButtonImage, style: .done, target: self, action: #selector(handleFavorite))
     }
 }
