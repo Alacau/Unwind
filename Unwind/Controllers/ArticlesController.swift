@@ -99,6 +99,7 @@ class ArticlesController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+        configure()
     }
         
     // MARK: - Selectors
