@@ -94,13 +94,15 @@ class ArticlesController: UIViewController {
         
         checkIfUserFavoritedArticle()
         configureUI()
+        configure()
     }
     
     // MARK: - API
     
     func checkIfUserFavoritedArticle() {
         ArticleService.shared.checkIfUserFavoritedArticle(forArticle: article) { (isFavorited) in
-            self.article.isFavorited = isFavorited
+            guard isFavorited == true else { return }
+            self.article.isFavorited = true
             self.configure()
         }
     }
@@ -112,16 +114,16 @@ class ArticlesController: UIViewController {
     }
     
     @objc func handleFavorite() {
-        ArticleService.shared.favoriteArticle(article: article) { (error, reference) in
+        ArticleService.shared.favoriteArticle(article: self.article) { (error, reference) in
             if let error = error {
                 print("DEBUG: \(error.localizedDescription)")
                 return
             }
-            let favorites = self.article.isFavorited ? self.article.favorites - 1 : self.article.favorites + 1
-            self.article.isFavorited.toggle()
-            self.article.favorites = favorites
-            self.configure()
         }
+        let favorites = self.article.isFavorited ? self.article.favorites - 1 : self.article.favorites + 1
+        self.article.isFavorited.toggle()
+        self.article.favorites = favorites
+        self.configure()
     }
     
     // MARK: - Helpers
