@@ -49,7 +49,7 @@ class MainTabController: UITabBarController {
         let profile = UserController(user: self.user!)
         let navItem3 = createTabControllers(image: UIImage(named: "user"), title: "Profile", viewController: profile)
         
-        let favorites = FavoritesController(user: self.user!)
+        let favorites = FavoritesController()
         let navItem4 = createTabControllers(image: UIImage(named: "favorites"), title: "Favorites", viewController: favorites)
 
         let notifications = NotificationsController()

@@ -16,7 +16,7 @@ class FavoritesController: UITableViewController {
     
     // MARK: - Properties
     
-    var user: User
+    var user: User?
     
     var articles = [Articles]() {
         didSet { tableView.reloadData() }
@@ -24,13 +24,10 @@ class FavoritesController: UITableViewController {
     
     // MARK: - Lifecycles
     
-    init(user: User) {
-        self.user = user
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchFavorites()
     }
     
     override func viewDidLoad() {
@@ -38,7 +35,6 @@ class FavoritesController: UITableViewController {
         
         configureUI()
         fetchCurrentUser()
-        fetchFavorites()
     }
     
     // MARK: - API
@@ -51,6 +47,7 @@ class FavoritesController: UITableViewController {
     }
     
     func fetchFavorites() {
+        guard let user = user else { return }
         ArticleService.shared.fetchFavorites(forUser: user) { (articles) in
             self.articles = articles
         }

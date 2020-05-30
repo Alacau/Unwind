@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import SDWebImage
 
 class ArticlesController: UIViewController {
@@ -168,6 +169,7 @@ class ArticlesController: UIViewController {
         dateLabel.text = articlesViewModel.timestamp
         articleImage.sd_setImage(with: article.image)
         contentLabel.attributedText = articlesViewModel.content
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: articlesViewModel.favoriteButtonImage, style: .done, target: self, action: #selector(handleFavorite))
     }
 }
