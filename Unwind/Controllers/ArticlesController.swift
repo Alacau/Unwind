@@ -108,8 +108,8 @@ class ArticlesController: UIViewController {
                 print("DEBUG: \(error.localizedDescription)")
                 return
             }
-            self.article.isFavorited.toggle()
             let favorites = self.article.isFavorited ? self.article.favorites - 1 : self.article.favorites + 1
+            self.article.isFavorited.toggle()
             self.article.favorites = favorites
             self.configure()
         }
