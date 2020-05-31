@@ -93,7 +93,6 @@ class ArticlesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        checkIfUserFavoritedArticle()
         configureUI()
         configure()
     }

@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import FirebaseDatabase
 
 private let reuseIdentifier = "FavoritesCell"
 
@@ -74,4 +73,7 @@ extension FavoritesController {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! FavoritesCell
         return cell
     }
+    
+    // We know that all these articles are favorited so we can start
+    // each article with a favorited-filled icon and handle it from there
 }
