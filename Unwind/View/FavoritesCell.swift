@@ -17,6 +17,11 @@ class FavoritesCell: UITableViewCell {
         return imageView
     }()
     
+    private let fullnameLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
     private let timestampLabel: UILabel = {
         let label = UILabel()
         return label
