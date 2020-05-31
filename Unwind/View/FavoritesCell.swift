@@ -12,6 +12,26 @@ class FavoritesCell: UITableViewCell {
     
     // MARK: - Properties
     
+    private let profileImageView: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    }()
+    
+    private let timestampLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
+    private let articleImageView: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    }()
+    
+    private let articleTitleLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
     // MARK: - Lifecycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -24,3 +44,4 @@ class FavoritesCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
