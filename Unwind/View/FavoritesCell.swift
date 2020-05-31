@@ -43,6 +43,20 @@ class FavoritesCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = .systemIndigo
+        
+        let userStack = UIStackView(arrangedSubviews: [profileImageView, fullnameLabel, timestampLabel])
+        userStack.axis = .horizontal
+        userStack.spacing = 16
+        
+        let articleStack = UIStackView(arrangedSubviews: [articleImageView, articleTitleLabel])
+        articleStack.axis = .horizontal
+        articleStack.spacing = 12
+        
+        addSubview(userStack)
+        userStack.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingRight: 12)
+        
+        addSubview(articleStack)
+        articleStack.anchor(top: userStack.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 8, paddingLeft: 12, paddingBottom: 12, paddingRight: 12)
     }
     
     required init?(coder: NSCoder) {
