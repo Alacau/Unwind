@@ -57,7 +57,7 @@ class ArticlesController: UIViewController {
     
     private lazy var articleImage: UIImageView = {
         let imageView = Utilities().simpleImageView(image: UIImage(named: "sign-in"), cornerRadius: 10, borderWidth: 0.3)
-        imageView.setDimensions(width: view.frame.width - 40, height: view.frame.height / 5)
+        imageView.setDimensions(width: view.frame.width - 40, height: view.frame.height / 4)
         return imageView
     }()
     
