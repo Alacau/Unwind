@@ -24,12 +24,6 @@ class FavoritesController: UITableViewController {
     
     // MARK: - Lifecycles
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        fetchFavorites()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +37,7 @@ class FavoritesController: UITableViewController {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         UserService.shared.fetchCurrentUser(uid: uid) { (user) in
             self.user = user
+            self.fetchFavorites()
         }
     }
     
