@@ -21,6 +21,8 @@ class FavoritesController: UITableViewController {
         didSet { tableView.reloadData() }
     }
     
+    
+    
     // MARK: - Lifecycles
     
     override func viewDidLoad() {
@@ -62,6 +64,7 @@ class FavoritesController: UITableViewController {
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage() // Removes underline view of navigation
         navigationItem.title = "Favorites"
+        navigationItem.searchController = UISearchController(searchResultsController: nil)
     }
 }
 
