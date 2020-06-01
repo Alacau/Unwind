@@ -21,7 +21,7 @@ class FavoritesController: UITableViewController {
         didSet { tableView.reloadData() }
     }
     
-    
+    private let searchController = UISearchController(searchResultsController: nil)
     
     // MARK: - Lifecycles
     
@@ -64,7 +64,13 @@ class FavoritesController: UITableViewController {
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage() // Removes underline view of navigation
         navigationItem.title = "Favorites"
-        navigationItem.searchController = UISearchController(searchResultsController: nil)
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.searchBar.autocapitalizationType = .none
+        searchController.searchBar.placeholder = "Search for favorited articles"
+        navigationItem.searchController = searchController
     }
 }
 
@@ -80,4 +86,10 @@ extension FavoritesController {
     
     // We know that all these articles are favorited so we can start
     // each article with a favorited-filled icon and handle it from there
+}
+
+extension FavoritesController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
 }
