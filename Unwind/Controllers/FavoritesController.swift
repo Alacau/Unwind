@@ -52,6 +52,7 @@ class FavoritesController: UITableViewController {
     func configureUI() {
         tableView.backgroundColor = .white
         tableView.register(FavoritesCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.separatorStyle = .none
         configureNavigationUI()
     }
     
