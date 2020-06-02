@@ -88,7 +88,7 @@ class FavoritesCell: UITableViewCell {
         let viewModel = ArticlesViewModel(article: articles)
         fullnameLabel.text = viewModel.fullnameLabel
         timestampLabel.text = viewModel.timestamp
-        profileImageView.sd_setImage(with: articles.image)
+        articleImageView.sd_setImage(with: articles.image)
         articleTitleLabel.text = viewModel.title
     }
 }
