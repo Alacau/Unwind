@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FavoritesCell: UITableViewCell {
     
     // MARK: - Properties
+    
+    var articles: Articles? {
+        didSet { configure() }
+    }
     
     private let profileImageView: UIImageView = {
         let imageView = Utilities().simpleImageView(image: UIImage(named: "favorites"), cornerRadius: 44 / 2, borderWidth: 0.3)
@@ -74,6 +79,17 @@ class FavoritesCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Helpers
+    
+    func configure() {
+        guard let articles = articles else { return }
+        let viewModel = ArticlesViewModel(article: articles)
+        fullnameLabel.text = viewModel.fullnameLabel
+        timestampLabel.text = viewModel.timestamp
+        profileImageView.sd_setImage(with: articles.image)
+        articleTitleLabel.text = viewModel.title
     }
 }
 
