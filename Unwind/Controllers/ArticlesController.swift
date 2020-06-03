@@ -95,6 +95,7 @@ class ArticlesController: UIViewController {
         
         configureUI()
         configure()
+        checkIfUserFavoritedArticle()
     }
     
     // MARK: - API
