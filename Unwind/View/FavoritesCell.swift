@@ -27,7 +27,6 @@ class FavoritesCell: UITableViewCell {
     private let fullnameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Sarabun", size: 20)
-        label.text = "Full Name"
         return label
     }()
     
@@ -35,7 +34,6 @@ class FavoritesCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont(name: "Sarabun", size: 16)
         label.textColor = .gray
-        label.text = "05/31/2020"
         return label
     }()
     
@@ -50,7 +48,6 @@ class FavoritesCell: UITableViewCell {
     private let articleTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Sarabun-Bold", size: 20)
-        label.text = "Lorem ipsum"
         return label
     }()
     
