@@ -64,6 +64,7 @@ class FavoritesController: UITableViewController {
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage() // Removes underline view of navigation
         navigationItem.title = "Favorites"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -83,6 +84,11 @@ extension FavoritesController {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! FavoritesCell
         cell.articles = articles[indexPath.row]
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = ArticlesController(article: articles[indexPath.row])
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     // We know that all these articles are favorited so we can start
