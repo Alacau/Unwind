@@ -21,6 +21,14 @@ class FavoritesController: UITableViewController {
         didSet { tableView.reloadData() }
     }
     
+    private var filteredArticles = [Articles]() {
+        didSet { tableView.reloadData() }
+    }
+    
+    private var inSearchMode: Bool {
+        return searchController.isActive && !searchController.searchBar.text!.isEmpty
+    }
+    
     private let searchController = UISearchController(searchResultsController: nil)
     
     // MARK: - Lifecycles
