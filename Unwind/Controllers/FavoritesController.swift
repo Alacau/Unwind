@@ -97,14 +97,14 @@ extension FavoritesController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = ArticlesController(article: articles[indexPath.row])
         navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    // We know that all these articles are favorited so we can start
-    // each article with a favorited-filled icon and handle it from there
+    }    
 }
 
 extension FavoritesController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
+        guard let searchText = searchController.searchBar.text?.lowercased() else { return }
+        filteredArticles = articles.filter({
+            $0.title.lowercased().contains(searchText) ||
+                $0.user.fullname.lowercased().contains(searchText) || $0.user.username.lowercased().contains(searchText) })
     }
 }
