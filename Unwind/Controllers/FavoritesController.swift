@@ -92,6 +92,7 @@ extension FavoritesController {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! FavoritesCell
         let article = inSearchMode ? filteredArticles[indexPath.row] : articles[indexPath.row]
         cell.articles = article
+        cell.selectionStyle = .none
         return cell
     }
     

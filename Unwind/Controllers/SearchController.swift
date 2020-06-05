@@ -88,6 +88,7 @@ extension SearchController {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ArticleCell
         let article = inSearchMode ? filteredArticles[indexPath.row] : articles[indexPath.row]
         cell.article = article
+        cell.selectionStyle = .none
         return cell
     }
     

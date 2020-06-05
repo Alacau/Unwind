@@ -100,6 +100,7 @@ extension FeedController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: articleIdentifier, for: indexPath) as! ArticleCell
         cell.article = articles[indexPath.row]
+        cell.selectionStyle = .none
         return cell
     }
     
