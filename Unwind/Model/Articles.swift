@@ -10,6 +10,7 @@ import Foundation
 
 struct Articles {
     let user: User
+    let articleID: String
     let uid: String
     let title: String
     let caption: String
@@ -19,14 +20,15 @@ struct Articles {
     var favorites: Int
     var isFavorited: Bool = false
     
-    init(user: User, uid: String, dictionary: [String: Any]) {
+    init(user: User, articleID: String, dictionary: [String: Any]) {
         self.user = user
-        self.uid = uid
+        self.articleID = articleID
         
         self.title = dictionary["title"] as? String ?? ""
         self.caption = dictionary["caption"] as? String ?? ""
         self.content = dictionary["content"] as? String ?? ""
         self.favorites = dictionary["favorites"] as? Int ?? 0
+        self.uid = dictionary["uid"] as? String ?? ""
         
         if let imageURL = dictionary["imageURL"] as? String {
             guard let url = URL(string: imageURL) else { return }
