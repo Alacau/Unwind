@@ -53,7 +53,11 @@ class UserController: UITableViewController {
         alertController.addAction(UIAlertAction(title: "Sign Out", style: .default, handler: { (action) in
             do {
                 try Auth.auth().signOut()
-                self.present(LandingController(), animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    let nav = UINavigationController(rootViewController: LandingController())
+                    nav.modalPresentationStyle = .fullScreen
+                    self.present(nav, animated: true, completion: nil)
+                }
             } catch let error {
                 print("DEBUG: Failed to log out with error \(error.localizedDescription)")
             }
