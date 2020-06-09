@@ -46,6 +46,12 @@ class UserController: UITableViewController {
         }
     }
     
+    // MARK: - Selectors
+    
+    @objc func handleSignOut() {
+        
+    }
+    
     // MARK: - Helpers
     
     func configureUI() {
@@ -62,6 +68,7 @@ class UserController: UITableViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = [.font : UIFont(name: "Sarabun-Bold", size: 36)!]
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage() // Removes underline view of navigation
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .done, target: self, action: #selector(handleSignOut))
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.title = "Profile" //  Will set this to the user's name?
     }
