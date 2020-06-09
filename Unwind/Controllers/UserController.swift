@@ -49,7 +49,16 @@ class UserController: UITableViewController {
     // MARK: - Selectors
     
     @objc func handleSignOut() {
-        
+        let alertController = UIAlertController(title: "Are you sure you want to sign out?", message: nil, preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "Sign Out", style: .default, handler: { (action) in
+            do {
+                try Auth.auth().signOut()
+                self.present(LandingController(), animated: true, completion: nil)
+            } catch let error {
+                print("DEBUG: Failed to log out with error \(error.localizedDescription)")
+            }
+        }))
+        present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - Helpers
