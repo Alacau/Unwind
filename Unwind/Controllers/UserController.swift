@@ -91,6 +91,7 @@ class UserController: UITableViewController {
         let profileHeader = ProfileHeader()
         profileHeader.fullnameLabel.text = viewModel.fullnameText
         profileHeader.usernameLabel.text = viewModel.usernameText
+        profileHeader.editProfileButton.isHidden = viewModel.shouldShowEditProfile
         return profileHeader
     }
 }

@@ -45,7 +45,7 @@ class ProfileHeader: UIView {
         return label
     }()
     
-    private let editProfileButton: UIButton = {
+    let editProfileButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Edit Profile", for: .normal)
         button.backgroundColor = .white

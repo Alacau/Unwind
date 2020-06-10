@@ -20,7 +20,7 @@ struct ProfileHeaderViewModel {
     }
     
     var shouldShowEditProfile: Bool {
-        return user.isCurrentUser
+        return !user.isCurrentUser
     }
     
     init(user: User) {
