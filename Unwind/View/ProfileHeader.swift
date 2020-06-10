@@ -45,6 +45,17 @@ class ProfileHeader: UIView {
         return label
     }()
     
+    private let editProfileButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Edit Profile", for: .normal)
+        button.backgroundColor = .white
+        button.setDimensions(width: 108, height: 32)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.unwindRed.cgColor
+        button.layer.cornerRadius = 32 / 2
+        return button
+    }()
+    
     // MARK: - Lifecycle
     
     override init(frame: CGRect) {
@@ -55,13 +66,14 @@ class ProfileHeader: UIView {
         let nameStack = UIStackView(arrangedSubviews: [fullnameLabel, usernameLabel])
         nameStack.axis = .vertical
         
-        let stack = UIStackView(arrangedSubviews: [userProfileImage, nameStack])
+        let stack = UIStackView(arrangedSubviews: [userProfileImage, nameStack, editProfileButton])
         stack.axis = .horizontal
         stack.spacing = 20
         stack.alignment = .center
         
         addSubview(stack)
         stack.anchor(top: safeAreaLayoutGuide.topAnchor, left: leftAnchor, paddingTop: 20, paddingLeft: 20)
+        editProfileButton.anchor(left: nameStack.rightAnchor, paddingLeft: 52)
         
         addSubview(underlineView)
         underlineView.anchor(top: stack.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 20, height: 0.5)
