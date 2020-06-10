@@ -19,6 +19,10 @@ struct ProfileHeaderViewModel {
         return "@\(user.username)"
     }
     
+    var shouldShowEditProfile: Bool {
+        return user.isCurrentUser
+    }
+    
     init(user: User) {
         self.user = user
     }
