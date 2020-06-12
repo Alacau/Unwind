@@ -24,6 +24,7 @@
 		443587FA2463C21600A733C2 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 443587E92463C21600A733C2 /* OFL.txt */; };
 		443587FB2463C21600A733C2 /* Sarabun-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 443587EA2463C21600A733C2 /* Sarabun-SemiBold.ttf */; };
 		444C54292469B5FA00325DBD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 444C54282469B5FA00325DBD /* GoogleService-Info.plist */; };
+		4452F162249422700065F93B /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4452F161249422700065F93B /* EditProfileController.swift */; };
 		4495EC2A2464872400F455FC /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495EC292464872400F455FC /* SignUpController.swift */; };
 		449B3C322479AE7A00E5558B /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449B3C312479AE7A00E5558B /* ProfileHeader.swift */; };
 		44B5C2D3246DB6E100F78A14 /* CreateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5C2D2246DB6E100F78A14 /* CreateController.swift */; };
@@ -95,6 +96,7 @@
 		443587E92463C21600A733C2 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		443587EA2463C21600A733C2 /* Sarabun-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sarabun-SemiBold.ttf"; sourceTree = "<group>"; };
 		444C54282469B5FA00325DBD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4452F161249422700065F93B /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
 		4495EC292464872400F455FC /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		449B3C312479AE7A00E5558B /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		44B5C2D2246DB6E100F78A14 /* CreateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateController.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				44E312332469B8E100C4513D /* NotificationsController.swift */,
 				44B5C2D2246DB6E100F78A14 /* CreateController.swift */,
 				44094F1624719E8D0037DE48 /* ArticlesController.swift */,
+				4452F161249422700065F93B /* EditProfileController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 				44F56F9C246DAB0200188BB5 /* Articles.swift in Sources */,
 				44E312322469B8D300C4513D /* FavoritesController.swift in Sources */,
 				44FD9F92246F1AE90065D630 /* ArticleService.swift in Sources */,
+				4452F162249422700065F93B /* EditProfileController.swift in Sources */,
 				440B89DF246E60610068DB45 /* CreateHeader.swift in Sources */,
 				440B89E1246E64250068DB45 /* CaptionTextView.swift in Sources */,
 				44E312372469CC0600C4513D /* AuthService.swift in Sources */,
