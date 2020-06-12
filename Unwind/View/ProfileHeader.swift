@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol ProfileHeaderDelegate: AnyObject {
+    func editProfile()
+}
+
 class ProfileHeader: UIView {
     
     // MARK: - Properties
+    
+    weak var delegate: ProfileHeaderDelegate?
     
     var userProfileImage: UIImageView = {
         let imageView = Utilities().simpleImageView(image: UIImage(named: "user"), cornerRadius: 56 / 2, borderWidth: 0.3)
@@ -90,6 +96,6 @@ class ProfileHeader: UIView {
     // MARK: - Selectors
     
     @objc func handleEditProfile() {
-        print("DEBUG: Edit profile tapped")
+        delegate?.editProfile()
     }
 }

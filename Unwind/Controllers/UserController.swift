@@ -19,7 +19,7 @@ class UserController: UITableViewController {
     private var articles = [Articles]() {
         didSet { tableView.reloadData() }
     }
-        
+    
     // MARK: - Lifecycles
     
     init(user: User) {
@@ -96,6 +96,8 @@ class UserController: UITableViewController {
     }
 }
 
+// MARK: - UITableViewDataSource & UITableViewDelegate
+
 extension UserController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return articles.count
@@ -113,11 +115,26 @@ extension UserController {
         navigationController?.pushViewController(controller, animated: true)
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        configureProfileHeader()
-    }
-    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 152
+    }
+}
+
+// MARK: - ProfileHeaderDelegate
+
+extension UserController: ProfileHeaderDelegate {
+    func editProfile() {
+        let controller = EditProfileController()
+        present(controller, animated: true, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let viewModel = ProfileHeaderViewModel(user: user)
+        let profileHeader = ProfileHeader()
+        profileHeader.fullnameLabel.text = viewModel.fullnameText
+        profileHeader.usernameLabel.text = viewModel.usernameText
+        profileHeader.editProfileButton.isHidden = viewModel.shouldShowEditProfile
+        profileHeader.delegate = self
+        return profileHeader
     }
 }
