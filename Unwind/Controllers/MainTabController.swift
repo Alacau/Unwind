@@ -22,7 +22,6 @@ class MainTabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        logUserOut() // Uncomment this to log out
         view.backgroundColor = .white
         authenticateUser()
     }
@@ -78,15 +77,6 @@ class MainTabController: UITabBarController {
             }
         } else {
             fetchCurrentUser()
-        }
-    }
-    
-    // Temporary log out function to test auth
-    func logUserOut() {
-        do {
-            try Auth.auth().signOut()
-        } catch let error {
-            print("DEBUG: Failed to log out with error \(error.localizedDescription)")
         }
     }
 }
