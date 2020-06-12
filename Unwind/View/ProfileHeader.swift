@@ -53,6 +53,7 @@ class ProfileHeader: UIView {
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.unwindRed.cgColor
         button.layer.cornerRadius = 32 / 2
+        button.addTarget(self, action: #selector(handleEditProfile), for: .touchUpInside)
         return button
     }()
     
@@ -84,5 +85,11 @@ class ProfileHeader: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Selectors
+    
+    @objc func handleEditProfile() {
+        print("DEBUG: Edit profile tapped")
     }
 }
