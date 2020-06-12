@@ -47,7 +47,7 @@ class SearchController: UITableViewController {
     
     func fetchArticles() {
         ArticleService.shared.fetchArticles { (articles) in
-            self.articles = articles
+            self.articles = articles.sorted(by: { $0.timestamp > $1.timestamp })
         }
     }
     

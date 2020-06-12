@@ -53,7 +53,7 @@ class FavoritesController: UITableViewController {
     func fetchFavorites() {
         guard let user = user else { return }
         ArticleService.shared.fetchFavorites(forUser: user) { (articles) in
-            self.articles = articles
+            self.articles = articles.sorted(by: { $0.timestamp > $1.timestamp })
         }
     }
     
