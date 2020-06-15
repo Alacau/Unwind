@@ -125,7 +125,7 @@ extension UserController {
 extension UserController: ProfileHeaderDelegate {
     func editProfile() {
         let controller = EditProfileController()
-        present(controller, animated: true, completion: nil)
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
