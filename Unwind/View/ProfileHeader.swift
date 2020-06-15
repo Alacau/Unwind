@@ -80,7 +80,6 @@ class ProfileHeader: UIView {
         
         addSubview(stack)
         stack.anchor(top: safeAreaLayoutGuide.topAnchor, left: leftAnchor, paddingTop: 20, paddingLeft: 20)
-        editProfileButton.anchor(left: nameStack.rightAnchor, paddingLeft: 52)
         
         addSubview(underlineView)
         underlineView.anchor(top: stack.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 20, height: 0.5)
