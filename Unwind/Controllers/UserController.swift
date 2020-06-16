@@ -19,9 +19,7 @@ class UserController: UITableViewController {
     private var articles = [Articles]() {
         didSet { tableView.reloadData() }
     }
-    
-    private let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissAlert))
-    
+        
     // MARK: - Lifecycles
     
     init(user: User) {
@@ -64,6 +62,9 @@ class UserController: UITableViewController {
                 print("DEBUG: Failed to log out with error \(error.localizedDescription)")
             }
         }))
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }))
         present(alertController, animated: true, completion: nil)
     }
     
@@ -77,7 +78,8 @@ class UserController: UITableViewController {
         
         tableView.register(ArticleCell.self, forCellReuseIdentifier: reuseIdentifier)
         
-        tableView.addGestureRecognizer(tapGesture)
+        view.addGestureRecognizer(tapGesture)
+        tapGesture.addTarget(self, action: #selector(dismissAlert))
     }
     
     func configureNavigationUI() {
