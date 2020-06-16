@@ -20,6 +20,8 @@ class UserController: UITableViewController {
         didSet { tableView.reloadData() }
     }
     
+    private let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissAlert))
+    
     // MARK: - Lifecycles
     
     init(user: User) {
@@ -74,6 +76,8 @@ class UserController: UITableViewController {
         configureNavigationUI()
         
         tableView.register(ArticleCell.self, forCellReuseIdentifier: reuseIdentifier)
+        
+        tableView.addGestureRecognizer(tapGesture)
     }
     
     func configureNavigationUI() {
