@@ -77,9 +77,6 @@ class UserController: UITableViewController {
         configureNavigationUI()
         
         tableView.register(ArticleCell.self, forCellReuseIdentifier: reuseIdentifier)
-        
-        view.addGestureRecognizer(tapGesture)
-        tapGesture.addTarget(self, action: #selector(dismissAlert))
     }
     
     func configureNavigationUI() {
