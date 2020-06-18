@@ -120,22 +120,12 @@ extension UserController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 152
     }
-}
-
-// MARK: - ProfileHeaderDelegate
-
-extension UserController: ProfileHeaderDelegate {
-    func editProfile() {
-        let controller = EditProfileController()
-        navigationController?.pushViewController(controller, animated: true)
-    }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let viewModel = ProfileHeaderViewModel(user: user)
         let profileHeader = ProfileHeader()
         profileHeader.fullnameLabel.text = viewModel.fullnameText
         profileHeader.usernameLabel.text = viewModel.usernameText
-        profileHeader.delegate = self
         return profileHeader
     }
 }

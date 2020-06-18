@@ -8,16 +8,10 @@
 
 import UIKit
 
-protocol ProfileHeaderDelegate: AnyObject {
-    func editProfile()
-}
-
 class ProfileHeader: UIView {
     
     // MARK: - Properties
-    
-    weak var delegate: ProfileHeaderDelegate?
-    
+        
     var userProfileImage: UIImageView = {
         let imageView = Utilities().simpleImageView(image: UIImage(named: "user"), cornerRadius: 56 / 2, borderWidth: 0.3)
         imageView.contentMode = .center
@@ -78,11 +72,5 @@ class ProfileHeader: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Selectors
-    
-    @objc func handleEditProfile() {
-        delegate?.editProfile()
     }
 }
