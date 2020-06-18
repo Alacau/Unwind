@@ -48,24 +48,29 @@ class UserController: UITableViewController {
     
     // MARK: - Selectors
     
-    @objc func handleSignOut() {
-        let alertController = UIAlertController(title: "Are you sure you want to sign out?", message: nil, preferredStyle: .actionSheet)
-        alertController.addAction(UIAlertAction(title: "Sign Out", style: .default, handler: { (action) in
-            do {
-                try Auth.auth().signOut()
-                DispatchQueue.main.async {
-                    let nav = UINavigationController(rootViewController: LandingController())
-                    nav.modalPresentationStyle = .fullScreen
-                    self.present(nav, animated: true, completion: nil)
-                }
-            } catch let error {
-                print("DEBUG: Failed to log out with error \(error.localizedDescription)")
-            }
-        }))
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (action) in
-            self.dismiss(animated: true, completion: nil)
-        }))
-        present(alertController, animated: true, completion: nil)
+//    @objc func handleSignOut() {
+//        let alertController = UIAlertController(title: "Are you sure you want to sign out?", message: nil, preferredStyle: .actionSheet)
+//        alertController.addAction(UIAlertAction(title: "Sign Out", style: .default, handler: { (action) in
+//            do {
+//                try Auth.auth().signOut()
+//                DispatchQueue.main.async {
+//                    let nav = UINavigationController(rootViewController: LandingController())
+//                    nav.modalPresentationStyle = .fullScreen
+//                    self.present(nav, animated: true, completion: nil)
+//                }
+//            } catch let error {
+//                print("DEBUG: Failed to log out with error \(error.localizedDescription)")
+//            }
+//        }))
+//        alertController.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (action) in
+//            self.dismiss(animated: true, completion: nil)
+//        }))
+//        present(alertController, animated: true, completion: nil)
+//    }
+    
+    @objc func handleSettingsTapped() {
+        let controller = EditProfileController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     // MARK: - Helpers
@@ -84,7 +89,7 @@ class UserController: UITableViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = [.font : UIFont(name: "Sarabun-Bold", size: 36)!]
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage() // Removes underline view of navigation
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "settings"), style: .plain, target: self, action: #selector(handleSignOut)) // Create different func handler
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "settings"), style: .plain, target: self, action: #selector(handleSettingsTapped)) // Create different func handler
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.title = "Profile" //  Will set this to the user's name?
     }
