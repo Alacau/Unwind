@@ -8,10 +8,18 @@
 
 import UIKit
 
-class EditProfileController: UIViewController {
+class EditProfileController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        
+        configureNavigation()
+    }
+    
+    func configureNavigation() {
+        title = "Edit Profile"
+        
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
 }
