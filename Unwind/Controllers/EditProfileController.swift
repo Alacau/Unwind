@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let reuseIdentifier = "SettingsCell"
+
 class EditProfileController: UITableViewController {
     
     // MARK: - Properties
@@ -30,7 +32,8 @@ class EditProfileController: UITableViewController {
     // MARK: - Helpers
     
     func configureUI() {
-        tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
+        tableView.register(SettingsCell.self, forCellReuseIdentifier: reuseIdentifier)
     }
     
     func configureNavigation() {
@@ -48,15 +51,11 @@ extension EditProfileController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SettingsCell
         return cell
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
 }

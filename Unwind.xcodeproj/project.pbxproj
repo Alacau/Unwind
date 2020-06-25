@@ -23,6 +23,7 @@
 		443587F92463C21600A733C2 /* Sarabun-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 443587E82463C21600A733C2 /* Sarabun-Bold.ttf */; };
 		443587FA2463C21600A733C2 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 443587E92463C21600A733C2 /* OFL.txt */; };
 		443587FB2463C21600A733C2 /* Sarabun-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 443587EA2463C21600A733C2 /* Sarabun-SemiBold.ttf */; };
+		4440A3CD24A5152C00FD8027 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4440A3CC24A5152C00FD8027 /* SettingsCell.swift */; };
 		444C54292469B5FA00325DBD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 444C54282469B5FA00325DBD /* GoogleService-Info.plist */; };
 		4452F162249422700065F93B /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4452F161249422700065F93B /* EditProfileController.swift */; };
 		4495EC2A2464872400F455FC /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495EC292464872400F455FC /* SignUpController.swift */; };
@@ -95,6 +96,7 @@
 		443587E82463C21600A733C2 /* Sarabun-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sarabun-Bold.ttf"; sourceTree = "<group>"; };
 		443587E92463C21600A733C2 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		443587EA2463C21600A733C2 /* Sarabun-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sarabun-SemiBold.ttf"; sourceTree = "<group>"; };
+		4440A3CC24A5152C00FD8027 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		444C54282469B5FA00325DBD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4452F161249422700065F93B /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
 		4495EC292464872400F455FC /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				440B89E0246E64250068DB45 /* CaptionTextView.swift */,
 				449B3C312479AE7A00E5558B /* ProfileHeader.swift */,
 				44D26870248162A2001ED1B7 /* FavoritesCell.swift */,
+				4440A3CC24A5152C00FD8027 /* SettingsCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				44DDA5BB2463B051008A42CF /* SignInController.swift in Sources */,
 				44DDBDED247C267300A09E38 /* ProfileHeaderViewModel.swift in Sources */,
 				44B5C2D3246DB6E100F78A14 /* CreateController.swift in Sources */,
+				4440A3CD24A5152C00FD8027 /* SettingsCell.swift in Sources */,
 				44299E15245FF6440084BCC1 /* AppDelegate.swift in Sources */,
 				44299E17245FF6440084BCC1 /* SceneDelegate.swift in Sources */,
 				44094F1724719E8D0037DE48 /* ArticlesController.swift in Sources */,
