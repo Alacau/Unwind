@@ -19,6 +19,7 @@ class EditProfileController: UITableViewController {
         
         view.backgroundColor = .white
         
+        configureUI()
         configureNavigation()
     }
     
@@ -27,6 +28,10 @@ class EditProfileController: UITableViewController {
     // MARK: - Selectors
     
     // MARK: - Helpers
+    
+    func configureUI() {
+        tableView.tableFooterView = UIView()
+    }
     
     func configureNavigation() {
         title = "Edit Profile"
@@ -39,7 +44,7 @@ class EditProfileController: UITableViewController {
 
 extension EditProfileController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,6 +53,10 @@ extension EditProfileController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
 }
