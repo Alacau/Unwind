@@ -37,8 +37,7 @@ class EditProfileHeader: UIView {
         let stack = UIStackView(arrangedSubviews: [profileImageView, editProfileImageButton])
         stack.alignment = .center
         stack.axis = .vertical
-        stack.spacing = 20
-        stack.distribution = .fillProportionally
+        stack.spacing = 8
         
         addSubview(stack)
         stack.center(inView: self)
