@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol EditProfileDelegate: AnyObject {
+    func handleEditProfile()
+}
+
 class EditProfileHeader: UIView {
+    
+    weak var delegate: EditProfileDelegate?
     
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -26,6 +32,7 @@ class EditProfileHeader: UIView {
         let button = UIButton(type: .system)
         let attributedString = NSAttributedString(string: "Edit Photo", attributes: [.font: UIFont(name: "Sarabun-Bold", size: 16)!])
         button.setAttributedTitle(attributedString, for: .normal)
+        button.addTarget(self, action: #selector(handleEditPhoto), for: .touchUpInside)
         return button
     }()
     
@@ -45,5 +52,11 @@ class EditProfileHeader: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Selectors
+    
+    @objc func handleEditPhoto() {
+        delegate?.handleEditProfile()
     }
 }
