@@ -56,10 +56,18 @@ extension EditProfileController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return EditProfileHeader()
+        let headerView = EditProfileHeader()
+        headerView.delegate = self
+        return headerView
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return view.frame.height / 4
+    }
+}
+
+extension EditProfileController: EditProfileDelegate {
+    func handleEditProfile() {
+        print("DEBUG: Handle edit profile")
     }
 }
