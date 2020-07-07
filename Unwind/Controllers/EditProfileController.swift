@@ -14,7 +14,10 @@ class EditProfileController: UITableViewController {
     
     // MARK: - Properties
     
+    private let headerView = EditProfileHeader()
+    
     private let imagePicker = UIImagePickerController()
+
     
     // MARK: - Lifecycle
     
@@ -58,7 +61,6 @@ extension EditProfileController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = EditProfileHeader()
         headerView.delegate = self
         return headerView
     }
