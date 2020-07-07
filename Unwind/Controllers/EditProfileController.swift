@@ -14,6 +14,8 @@ class EditProfileController: UITableViewController {
     
     // MARK: - Properties
     
+    private let imagePicker = UIImagePickerController()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -68,6 +70,10 @@ extension EditProfileController {
 
 extension EditProfileController: EditProfileDelegate {
     func handleEditProfile() {
-        print("DEBUG: Handle edit profile")
+        imagePicker.delegate = self
     }
+}
+
+extension EditProfileController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    
 }
