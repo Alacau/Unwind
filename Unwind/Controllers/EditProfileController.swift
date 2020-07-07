@@ -71,6 +71,8 @@ extension EditProfileController {
 extension EditProfileController: EditProfileDelegate {
     func handleEditProfile() {
         imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
     }
 }
 
